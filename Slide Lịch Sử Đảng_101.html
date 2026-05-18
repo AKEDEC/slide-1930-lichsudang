@@ -692,22 +692,31 @@ body{
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="orna-corner" viewBox="0 0 100 100">
+      <!-- Hoa sen Việt Nam · biểu tượng văn hoá từ triều Lý -->
       <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-        <!-- Khung góc thanh mảnh (echo style văn kiện cổ) -->
-        <path d="M2 64 L2 14 Q2 2 14 2 L64 2"/>
-        <path d="M2 36 L2 20 Q2 12 10 12 L18 12" opacity="0.45"/>
-        <!-- Tia sáng toả ra từ ngôi sao (mặt trời cách mạng) -->
-        <g stroke-width="1" opacity="0.7">
-          <line x1="30" y1="30" x2="40" y2="40"/>
-          <line x1="30" y1="30" x2="52" y2="30"/>
-          <line x1="30" y1="30" x2="30" y2="52"/>
-          <line x1="30" y1="30" x2="46" y2="38"/>
-          <line x1="30" y1="30" x2="38" y2="46"/>
-        </g>
+        <!-- Khung góc kép thanh mảnh (kiểu cổ truyền) -->
+        <path d="M2 70 L2 16 Q2 2 16 2 L70 2"/>
+        <path d="M8 50 L8 22 Q8 14 16 14 L44 14" opacity="0.42"/>
       </g>
-      <!-- Ngôi sao 5 cánh (Đảng / quốc kỳ) -->
-      <g transform="translate(30,30) rotate(0)" fill="currentColor">
-        <path d="M0,-9 L2.65,-3.65 L8.56,-2.78 L4.28,1.39 L5.29,7.29 L0,4.5 L-5.29,7.29 L-4.28,1.39 L-8.56,-2.78 L-2.65,-3.65 Z"/>
+      <!-- Hoa sen cách điệu 5 cánh — bung từ góc -->
+      <g transform="translate(32,32)" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none">
+        <!-- Cánh trung tâm (đứng) -->
+        <path d="M0,-2 C-5,-9 -5,-18 0,-22 C5,-18 5,-9 0,-2 Z" fill="currentColor" fill-opacity="0.22"/>
+        <!-- 2 cánh chéo trên -->
+        <path d="M-3,-1 C-12,-5 -18,-12 -19,-18 C-13,-17 -7,-12 -3,-1 Z" fill="currentColor" fill-opacity="0.18"/>
+        <path d="M3,-1 C12,-5 18,-12 19,-18 C13,-17 7,-12 3,-1 Z" fill="currentColor" fill-opacity="0.18"/>
+        <!-- 2 cánh ngang ngoài -->
+        <path d="M-3,1 C-12,2 -20,-2 -22,-8 C-15,-9 -8,-6 -3,1 Z" fill="currentColor" fill-opacity="0.14"/>
+        <path d="M3,1 C12,2 20,-2 22,-8 C15,-9 8,-6 3,1 Z" fill="currentColor" fill-opacity="0.14"/>
+      </g>
+      <!-- Nhuỵ sen + ngôi sao nhỏ (quốc kỳ) -->
+      <g transform="translate(32,32)" fill="currentColor">
+        <path d="M0,-5.5 L1.6,-2.25 L5.2,-1.7 L2.6,0.85 L3.2,4.45 L0,2.75 L-3.2,4.45 L-2.6,0.85 L-5.2,-1.7 L-1.6,-2.25 Z" opacity="0.95"/>
+      </g>
+      <!-- Đường gạch ngang điểm xuyết (kiểu Đông Sơn) -->
+      <g stroke="currentColor" stroke-width="0.9" opacity="0.5">
+        <line x1="58" y1="14" x2="78" y2="14"/>
+        <line x1="14" y1="58" x2="14" y2="78"/>
       </g>
     </symbol>
     <symbol id="orna-divider" viewBox="0 0 200 20">
@@ -966,7 +975,7 @@ body{
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
   <div class="kicker">Cương lĩnh 02/1930 · Nội dung</div>
-  <h2 class="s-title">Năm trụ cột nội dung</h2>
+  <h2 class="s-title">Nội dung chủ yếu</h2>
   <div class="rule"></div>
   <div class="body">
     <div class="cols aside-l" style="flex:1">
