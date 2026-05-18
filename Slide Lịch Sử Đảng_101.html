@@ -324,8 +324,7 @@ body{
   box-shadow:0 14px 30px -14px rgba(58,45,29,.5),0 0 0 1px rgba(122,86,48,.2);
   display:flex;flex-direction:column;
 }
-.frame img{width:100%;height:100%;object-fit:cover;display:block;
-  filter:sepia(.08) contrast(1.02)}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
 .frame .f-cap{
   position:absolute;left:0;right:0;bottom:0;
   padding:11px 16px;
@@ -348,15 +347,9 @@ body{
   position:relative;flex:1;min-height:0;
   border-radius:10px;overflow:hidden;
 }
-.vignette img{width:100%;height:100%;object-fit:cover;display:block;
-  filter:sepia(.12) contrast(1.03) brightness(.96)}
-.vignette::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent 50%,var(--paper) 100%);
-  pointer-events:none;
-}
-.vignette.fade-l::after{background:linear-gradient(-90deg,transparent 50%,var(--paper) 100%)}
-.vignette.fade-b::after{background:linear-gradient(0deg,var(--paper) 0%,transparent 50%)}
+.vignette img{width:100%;height:100%;object-fit:cover;display:block}
+.vignette::after{display:none}
+.vignette.fade-l::after,.vignette.fade-b::after{display:none}
 /* Caption nằm dưới ảnh vignette */
 .vignette .v-cap{
   position:absolute;left:0;right:0;bottom:0;z-index:3;
@@ -373,8 +366,7 @@ body{
   box-shadow:0 16px 30px -14px rgba(58,45,29,.5),0 4px 10px -4px rgba(58,45,29,.2);
   position:relative;
 }
-.polaroid img{width:100%;display:block;border-radius:2px;
-  filter:sepia(.1) contrast(1.02)}
+.polaroid img{width:100%;display:block;border-radius:2px}
 .polaroid .p-text{
   position:absolute;left:10px;right:10px;bottom:9px;text-align:center;
   font-family:var(--font-display);font-style:italic;font-size:14px;color:var(--brown);
@@ -439,8 +431,7 @@ body{
   position:relative;overflow:hidden;
   transform:rotate(1.5deg);
 }
-.cover .c-portrait img{width:100%;height:100%;object-fit:cover;display:block;
-  filter:sepia(.18) contrast(1.05) saturate(.95)}
+.cover .c-portrait img{width:100%;height:100%;object-fit:cover;display:block}
 .cover .c-source{
   font-size:11px;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(201,164,95,.85);font-weight:700;
@@ -510,8 +501,7 @@ body{
   box-shadow:0 25px 50px -20px rgba(58,45,29,.45);
   position:relative;
 }
-.finale .f-portrait img{width:100%;height:100%;object-fit:cover;
-  filter:sepia(.1) contrast(1.02)}
+.finale .f-portrait img{width:100%;height:100%;object-fit:cover}
 
 /* ════════ THANK YOU SLIDE ════════ */
 .slide.thanks{
@@ -702,15 +692,22 @@ body{
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="orna-corner" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 2 L60 2"/>
-        <path d="M2 2 L2 60"/>
-        <path d="M70 2 L80 2 Q85 2 85 7 L85 12"/>
-        <path d="M2 70 L2 80 Q2 85 7 85 L12 85"/>
-        <circle cx="2" cy="2" r="3"/>
-        <path d="M20 2 Q25 8 30 2 M30 2 Q35 8 40 2"/>
-        <path d="M2 20 Q8 25 2 30 M2 30 Q8 35 2 40"/>
-        <path d="M14 14 L24 14 L24 24 M14 14 L14 24"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+        <!-- Khung góc thanh mảnh (echo style văn kiện cổ) -->
+        <path d="M2 64 L2 14 Q2 2 14 2 L64 2"/>
+        <path d="M2 36 L2 20 Q2 12 10 12 L18 12" opacity="0.45"/>
+        <!-- Tia sáng toả ra từ ngôi sao (mặt trời cách mạng) -->
+        <g stroke-width="1" opacity="0.7">
+          <line x1="30" y1="30" x2="40" y2="40"/>
+          <line x1="30" y1="30" x2="52" y2="30"/>
+          <line x1="30" y1="30" x2="30" y2="52"/>
+          <line x1="30" y1="30" x2="46" y2="38"/>
+          <line x1="30" y1="30" x2="38" y2="46"/>
+        </g>
+      </g>
+      <!-- Ngôi sao 5 cánh (Đảng / quốc kỳ) -->
+      <g transform="translate(30,30) rotate(0)" fill="currentColor">
+        <path d="M0,-9 L2.65,-3.65 L8.56,-2.78 L4.28,1.39 L5.29,7.29 L0,4.5 L-5.29,7.29 L-4.28,1.39 L-8.56,-2.78 L-2.65,-3.65 Z"/>
       </g>
     </symbol>
     <symbol id="orna-divider" viewBox="0 0 200 20">
@@ -894,30 +891,30 @@ body{
   <h2 class="s-title">Tầm quan trọng của <em>hai văn kiện</em></h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="cols two" style="flex:1">
-      <div class="block gold" style="display:flex;flex-direction:column">
-        <div class="b-head">Cương lĩnh 02/1930 · "Ngọn cờ dẫn lối"</div>
-        <ul style="font-size:15.5px">
-          <li><b>Chấm dứt triệt để khủng hoảng đường lối cứu nước</b> sau các thất bại của khuynh hướng phong kiến &amp; tư sản → khẳng định <b>vai trò lãnh đạo tuyệt đối</b> của giai cấp công nhân &amp; Đảng Cộng sản.</li>
-          <li>Khẳng định <b>mâu thuẫn dân tộc</b> là chủ yếu; đặt nhiệm vụ <b>chống đế quốc, giành độc lập dân tộc</b> lên hàng đầu.</li>
+    <div class="cols two" style="flex:1;gap:14px">
+      <div class="block gold" style="display:flex;flex-direction:column;padding:14px 18px">
+        <div class="b-head" style="font-size:18px;margin-bottom:8px">Cương lĩnh 02/1930 · "Ngọn cờ dẫn lối"</div>
+        <ul style="font-size:13px;gap:5px;line-height:1.45">
+          <li><b>Chấm dứt khủng hoảng đường lối cứu nước</b> sau thất bại của khuynh hướng phong kiến &amp; tư sản → khẳng định <b>vai trò lãnh đạo</b> của giai cấp công nhân &amp; Đảng Cộng sản.</li>
+          <li>Khẳng định <b>mâu thuẫn dân tộc</b> là chủ yếu; đặt nhiệm vụ <b>chống đế quốc, giành độc lập</b> lên hàng đầu.</li>
           <li>Tập hợp <b>rộng rãi</b> tiểu tư sản, trí thức, trung nông, phú nông, trung &amp; tiểu địa chủ yêu nước.</li>
-          <li>Chọn con đường <b>bạo lực cách mạng của quần chúng</b>; kiên quyết chống cải lương, thỏa hiệp.</li>
+          <li>Chọn con đường <b>bạo lực cách mạng của quần chúng</b>; chống cải lương, thỏa hiệp.</li>
           <li>Cách mạng VN là <b>bộ phận khăng khít</b> của cách mạng vô sản thế giới.</li>
         </ul>
       </div>
-      <div class="block red" style="display:flex;flex-direction:column">
-        <div class="b-head">Luận cương 10/1930 · "Cột mốc bổ sung, phát triển"</div>
-        <ul style="font-size:15.5px">
-          <li><b>Hiện thực hóa con đường tiến thẳng lên CNXH</b>: giai đoạn 1 — cách mạng tư sản kiểu mới do giai cấp công nhân lãnh đạo; giai đoạn 2 — cách mạng XHCN giải phóng con người.</li>
-          <li>Xác định <b>điều kiện chủ quan</b> (vai trò của Đảng &amp; <b>liên minh công nông</b>) và <b>khách quan</b> (sự giúp đỡ của bạn bè quốc tế) để thuộc địa bỏ qua giai đoạn TBCN.</li>
-          <li>Nâng tầm tư duy bạo lực cách mạng → giành chính quyền bằng <b>khởi nghĩa vũ trang</b>, tổ chức bài bản từ thấp đến cao, theo <b>"khuôn phép nhà binh"</b>.</li>
-          <li><b>Hoàn thiện lý luận xây dựng Đảng kiểu mới</b>: nguyên tắc tổ chức nghiêm ngặt giữ vững <b>bản chất giai cấp công nhân</b>; lấy <b>Mác Lênin</b> làm gốc, kỷ luật tập trung &amp; gắn bó quần chúng.</li>
+      <div class="block red" style="display:flex;flex-direction:column;padding:14px 18px">
+        <div class="b-head" style="font-size:18px;margin-bottom:8px">Luận cương 10/1930 · "Cột mốc bổ sung, phát triển"</div>
+        <ul style="font-size:13px;gap:5px;line-height:1.45">
+          <li><b>Hiện thực hóa con đường tiến thẳng lên CNXH</b>: gđ 1 — cách mạng tư sản kiểu mới do công nhân lãnh đạo; gđ 2 — cách mạng XHCN giải phóng con người.</li>
+          <li>Xác định <b>điều kiện chủ quan</b> (Đảng &amp; <b>liên minh công nông</b>) và <b>khách quan</b> (giúp đỡ quốc tế) để thuộc địa bỏ qua TBCN.</li>
+          <li>Nâng tầm bạo lực cách mạng → giành chính quyền bằng <b>khởi nghĩa vũ trang</b>, tổ chức bài bản theo <b>"khuôn phép nhà binh"</b>.</li>
+          <li><b>Hoàn thiện lý luận xây dựng Đảng kiểu mới</b>: tổ chức nghiêm ngặt, giữ vững <b>bản chất giai cấp công nhân</b>; lấy <b>Mác Lênìn</b> làm gốc, kỷ luật tập trung &amp; gắn bó quần chúng.</li>
         </ul>
       </div>
     </div>
-    <div class="callout" style="flex:none;margin-top:8px">
+    <div class="callout" style="flex:none;margin-top:6px;padding:12px 18px">
       <span class="co-tag">Tiểu kết</span>
-      <span class="co-text">Cả hai văn kiện đều nhất quán mục tiêu đưa cách mạng Việt Nam theo con đường <b>vô sản</b>, hướng tới <b>xã hội cộng sản</b>; khác biệt giữa chúng phản ánh sự <b>kế thừa, bổ sung và phát triển</b> trong tư duy lý luận của Đảng.</span>
+      <span class="co-text" style="font-size:14.5px;line-height:1.4">Cả hai văn kiện đều nhất quán mục tiêu đưa cách mạng Việt Nam theo con đường <b>vô sản</b>, hướng tới <b>xã hội cộng sản</b>; khác biệt phản ánh sự <b>kế thừa, bổ sung và phát triển</b> trong tư duy lý luận của Đảng.</span>
     </div>
   </div>
 </section>
@@ -944,13 +941,13 @@ body{
   <div class="rule"></div>
   <div class="body">
     <div class="cols aside-r" style="flex:1">
-      <div class="numlist" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;align-content:start">
-        <div class="item"><div class="n">01</div><div class="t"><strong>Xã hội thuộc địa nửa phong kiến</strong>Pháp <b>khai thác thuộc địa lần II</b> biến đổi cơ cấu kinh tế &amp; giai cấp; tồn tại <b>hai mâu thuẫn</b>: <b>dân tộc</b> &amp; <b>giai cấp</b>.</div></div>
-        <div class="item"><div class="n">02</div><div class="t"><strong>Khủng hoảng đường lối</strong>Phong trào yêu nước <b>liên tục thất bại</b> vì <b>thiếu đường lối phù hợp</b>.</div></div>
-        <div class="item"><div class="n">03</div><div class="t"><strong>Tìm đường cứu nước</strong>Năm <b>1911</b>, <b>Nguyễn Ái Quốc</b> ra đi, tìm thấy con đường <b>cách mạng vô sản</b>.</div></div>
-        <div class="item"><div class="n">04</div><div class="t"><strong>Chuẩn bị tổ chức</strong>Năm <b>1924</b> NÁQ về <b>Quảng Châu</b>; <b>6/1925</b> sáng lập <b>Hội Việt Nam Cách mạng Thanh niên</b>.</div></div>
-        <div class="item"><div class="n">05</div><div class="t"><strong>Ba tổ chức phân liệt</strong>Năm <b>1929</b>, ba tổ chức cộng sản hoạt động <b>riêng rẽ</b>, <b>tranh giành ảnh hưởng</b>.</div></div>
-        <div class="item"><div class="n">06</div><div class="t"><strong>Hội nghị hợp nhất</strong><b>6/1 → 7/2/1930</b> tại <b>Hương Cảng</b>, hợp nhất thành <b>Đảng Cộng sản Việt Nam</b>; thông qua <b>Chánh cương vắn tắt &amp; Sách lược vắn tắt</b> do <b>Nguyễn Ái Quốc</b> soạn thảo — <b>Cương lĩnh chính trị đầu tiên</b>.</div></div>
+      <div class="numlist" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;align-content:start">
+        <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">01</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Xã hội thuộc địa nửa phong kiến</strong>Pháp <b>khai thác thuộc địa lần II</b> biến đổi cơ cấu kinh tế &amp; giai cấp; tồn tại <b>hai mâu thuẫn</b>: <b>dân tộc</b> &amp; <b>giai cấp</b>.</div></div>
+        <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">02</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Khủng hoảng đường lối</strong>Phong trào yêu nước <b>liên tục thất bại</b> vì <b>thiếu đường lối phù hợp</b>.</div></div>
+        <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">03</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Tìm đường cứu nước</strong>Năm <b>1911</b>, <b>Nguyễn Ái Quốc</b> ra đi, tìm thấy con đường <b>cách mạng vô sản</b>.</div></div>
+        <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">04</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Chuẩn bị tổ chức</strong>Năm <b>1924</b> NÁQ về <b>Quảng Châu</b>; <b>6/1925</b> sáng lập <b>Hội Việt Nam Cách mạng Thanh niên</b>.</div></div>
+        <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">05</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Ba tổ chức phân liệt</strong>Năm <b>1929</b>, ba tổ chức cộng sản hoạt động <b>riêng rẽ</b>, <b>tranh giành ảnh hưởng</b>.</div></div>
+        <div class="item" style="padding:11px 16px;grid-column:1 / -1"><div class="n" style="font-size:26px">06</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Hội nghị hợp nhất</strong><b>6/1 → 7/2/1930</b> tại <b>Hương Cảng</b>, hợp nhất thành <b>Đảng Cộng sản Việt Nam</b>; thông qua <b>Chánh cương &amp; Sách lược vắn tắt</b> do <b>Nguyễn Ái Quốc</b> soạn thảo — <b>Cương lĩnh chính trị đầu tiên</b>.</div></div>
       </div>
       <div class="vignette">
         <img src="images/nha-rong.jpg" alt="Bến Nhà Rồng">
@@ -1063,8 +1060,8 @@ body{
         </div>
       </div>
       <div class="vignette">
-        <img src="images/tran-phu-tbt.jpg" alt="Đồng chí Trần Phú">
-        <div class="v-cap"><b>Đồng chí Trần Phú (1904 → 1931)</b> <em>· Tổng Bí thư đầu tiên của Đảng · chủ trì soạn thảo Luận cương</em></div>
+        <img src="images/hoi-nghi-tw1-1930.png" alt="Hội nghị Trung ương lần thứ nhất · 10/1930">
+        <div class="v-cap"><b>Hội nghị BCH Trung ương lần I</b> <em>· 14 → 31/10/1930 tại Hương Cảng · thông qua Luận cương do Trần Phú soạn thảo</em></div>
       </div>
     </div>
   </div>
@@ -1080,8 +1077,8 @@ body{
   <div class="body">
     <div class="cols aside-l" style="flex:1">
       <div class="vignette fade-l">
-        <img src="images/hanoi-bxp-1946.jpg" alt="Hà Nội 1946 - tranh Bùi Xuân Phái">
-        <div class="v-cap"><b>"Hà Nội · 1946"</b> <em>· tranh sơn dầu của họa sĩ Bùi Xuân Phái</em></div>
+        <img src="images/van-kien-1930-manuscript.png" alt="Văn kiện chính trị 1930">
+        <div class="v-cap"><b>Văn kiện chính trị đầu tiên của Đảng</b> <em>· bản chiến lược vắn tắt · năm 1930</em></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:9px;min-height:0;overflow:hidden">
         <div class="row red">
@@ -1477,13 +1474,13 @@ body{
           <p>"Bỏ qua thời kỳ tư bản mà tranh đấu thẳng lên con đường xã hội chủ nghĩa."</p>
           <cite>Cách mạng tư sản dân quyền là <b>"thời kỳ dự bị"</b>: đấu tranh đánh đổ đế quốc Pháp cùng phong kiến, địa chủ phản động — tạo tiền đề cho cách mạng vô sản phát triển. Điểm mới mà Chánh cương &amp; Sách lược vắn tắt chưa đề cập đầy đủ.</cite>
         </div>
-        <div class="cols three" style="flex:1">
-          <div class="block red"><div class="b-head">Chính trị</div>
-            <ul><li>Sự <b>lãnh đạo của giai cấp vô sản</b>, <b>liên minh công nông</b> và <b>chính quyền công nông</b>.</li></ul></div>
-          <div class="block red"><div class="b-head">Kinh tế</div>
-            <ul><li><b>Phát triển công nghiệp</b>, tịch thu cơ sở kinh tế lớn của <b>tư bản nước ngoài</b>, thực hiện <b>quyền sở hữu ruộng đất</b> thuộc về chính quyền công nông.</li></ul></div>
-          <div class="block red"><div class="b-head">Xã hội</div>
-            <ul><li><b>Giải phóng con người</b>, <b>ngày làm 8 giờ</b>, <b>nam nữ bình quyền</b>, <b>dân tộc tự quyết</b>.</li></ul></div>
+        <div class="cols three" style="flex:1;grid-template-columns:1fr 1.35fr 1fr">
+          <div class="block red" style="padding:14px 16px"><div class="b-head" style="font-size:19px;margin-bottom:6px">Chính trị</div>
+            <ul><li style="font-size:14.5px;line-height:1.5">Sự <b>lãnh đạo của giai cấp vô sản</b>, <b>liên minh công nông</b> và <b>chính quyền công nông</b>.</li></ul></div>
+          <div class="block red" style="padding:14px 16px"><div class="b-head" style="font-size:19px;margin-bottom:6px">Kinh tế</div>
+            <ul><li style="font-size:14.5px;line-height:1.5"><b>Phát triển công nghiệp</b>, tịch thu cơ sở kinh tế lớn của <b>tư bản nước ngoài</b>, thực hiện <b>quyền sở hữu ruộng đất</b> thuộc về chính quyền công nông.</li></ul></div>
+          <div class="block red" style="padding:14px 16px"><div class="b-head" style="font-size:19px;margin-bottom:6px">Xã hội</div>
+            <ul><li style="font-size:14.5px;line-height:1.5"><b>Giải phóng con người</b>, <b>ngày làm 8 giờ</b>, <b>nam nữ bình quyền</b>, <b>dân tộc tự quyết</b>.</li></ul></div>
         </div>
         <div class="callout" style="flex:none">
           <span class="co-tag">Hiện thực hóa</span>
@@ -1635,7 +1632,7 @@ body{
   <div class="t-bg"><img src="images/hcm-1946.jpg" alt=""></div>
   <div class="t-inner">
     <svg class="t-orna"><use href="#orna-flourish"/></svg>
-    <h2 class="t-big">Cảm ơn <em>cô và các bạn</em></h2>
+    <h2 class="t-big">Cảm ơn <em>thầy và các bạn</em></h2>
     <p class="t-sub">Nhóm rất mong nhận được câu hỏi và góp ý &nbsp;·&nbsp; Lớp <b>CLC-QTL49A</b></p>
     <svg class="t-orna" style="margin-top:18px"><use href="#orna-flourish"/></svg>
   </div>
