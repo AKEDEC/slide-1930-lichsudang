@@ -5,10 +5,25 @@ Ghi lại ảnh nào dùng cho slide nào, đặc biệt là các ảnh chất l
 
 ## 🆕 Ảnh mới chất lượng cao (vừa thêm từ PDF)
 
+### Đã ÁP DỤNG vào slide
+
 | Ảnh | Slide đang dùng | Nguồn / Mô tả |
 |-----|-----------------|---------------|
-| `hoi-nghi-tw1-1930.png` | **Slide 10** · Hoàn cảnh ra đời Luận cương | Tranh sơn dầu Hội nghị BCH Trung ương lần I (14→31/10/1930) — Trần Phú đang trình bày tại bàn họp |
+| `hoi-nghi-tw1-1930.png` | **Slide 10** · Hoàn cảnh ra đời Luận cương | Tranh sơn dầu Hội nghị BCH Trung ương lần I (14→31/10/1930) — Trần Phú trình bày tại bàn họp |
 | `van-kien-1930-manuscript.png` | **Slide 11** · Nội dung Luận cương 10/1930 | Bản chép tay **Chánh cương vắn tắt + Sách lược vắn tắt** — văn kiện chính trị đầu tiên của Đảng |
+| `hong-kong-1930.png` | **Slide 5** · Divider Phần II (background) | Cảnh Hồng Kông đầu TK XX với cờ Pháp + diễu binh — nơi Cương lĩnh 02/1930 được thông qua |
+| `farmers-vn-hires.png` | **Slide 14b** · Lý luận & Chiến lược (vignette nông dân) | Nông dân Việt Nam cày bừa hi-res 1536×1065 — thay thế giong-phuonghuong.png |
+| `dang-vien-rung.png` | **Slide 14d** · Phương pháp & Quốc tế (vignette) | Đảng viên với cờ đỏ búa liềm — sức mạnh bạo lực CM quần chúng. Thay `giong-phuongphap.png` |
+| `lien-xo-parade.png` | **Slide 3** · Bối cảnh VN 1930 (polaroid mới) | Diễu hành Quảng trường Đỏ Liên Xô — minh hoạ "Liên Xô đạt thành tựu rực rỡ" |
+
+### Đã lưu vào folder, CHƯA dùng (dự phòng)
+
+| Ảnh | Mô tả | Có thể dùng cho |
+|-----|-------|-----------------|
+| `luan-cuong-manuscript.png` | Bản chép tay Luận cương 1 trang | Slide 18 hoặc 12 |
+| `luan-cuong-cover.png` | Trang bìa Luận cương in "LUẬN CƯƠNG CHÁNH TRỊ" | Slide 18 Giá trị Luận cương |
+| `mit-tinh-nha-hat-lon.png` | Mít tinh trước Nhà hát Lớn Hà Nội | Slide 4 timeline (cao trào) |
+| `hcm-greeted.png` | Bác Hồ được đón tiếp | Slide 19 hoặc 20 |
 
 ## 📷 Bản đồ tổng thể: ảnh ↔ slide
 
