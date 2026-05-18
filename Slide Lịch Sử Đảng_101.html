@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ══════════ THEME — Vintage Brown & Cream ══════════ */
+/* ══════════ THEME, Vintage Brown & Cream ══════════ */
 :root{
   --paper:#f6efdf;            /* nền giấy cream chính */
   --paper-2:#efe5d0;          /* card / panel  */
@@ -692,11 +692,60 @@ body{
 }
 .frame:hover .f-tag{filter:brightness(1.1)}
 
+/* ════════ HOVER cho TEXT SEGMENTS ════════ */
+/* List items trong block — highlight bullet */
+.block li{transition:color .25s ease, transform .25s ease, padding-left .25s ease}
+.block li::before{transition:transform .3s cubic-bezier(.2,.7,.2,1), color .25s ease}
+.block li:hover{color:var(--brown-dark);padding-left:22px}
+.block li:hover::before{transform:translateX(-2px) scale(1.4);color:var(--gold)}
+.block.red li:hover::before{color:var(--red)}
+.block li:hover b{color:var(--red-deep)}
+
+/* Cells riêng trong bảng so sánh — hover cell sáng hơn */
+.ctable .ct-row > div{transition:background .3s ease, color .3s ease}
+.ctable .ct-row .c0:hover{background:rgba(220,201,158,.85);color:var(--red-deep)}
+.ctable .ct-row .c1:hover{background:rgba(163,117,38,.22)}
+.ctable .ct-row .c2:hover{background:rgba(140,28,19,.20)}
+
+/* Tiêu đề slide hover — tạo cảm giác đáp ứng */
+.s-title{transition:letter-spacing .35s ease, color .3s ease}
+.s-title:hover{letter-spacing:0}
+.s-title em{transition:color .3s ease, text-shadow .3s ease}
+.s-title:hover em{text-shadow:0 2px 12px rgba(140,28,19,.25)}
+
+/* Kicker hover — gold accent đậm */
+.kicker{transition:color .3s ease, letter-spacing .35s ease}
+.kicker:hover{color:var(--brown-dark);letter-spacing:.32em}
+.kicker::before{transition:width .35s cubic-bezier(.2,.7,.2,1), background .3s ease}
+.kicker:hover::before{width:56px;background:var(--red)}
+
+/* Quote text — italic display hover */
+.quote p{transition:color .3s ease}
+.quote:hover p{color:var(--red-deep)}
+.quote cite{transition:color .3s ease}
+.quote:hover cite{color:var(--brown-dark)}
+
+/* Numlist title (strong) hover — highlight */
+.numlist .t strong{transition:color .25s ease, transform .25s ease}
+.numlist .item:hover .t strong{color:var(--red-deep);transform:translateX(1px)}
+.numlist .t b{transition:color .25s ease}
+.numlist .item:hover .t b{color:var(--brown-dark)}
+
+/* Panel text — hover làm chữ b đậm hơn */
+.panel b{transition:color .3s ease}
+.panel:hover b{color:var(--red-deep)}
+
+/* Timeline text hover (đã có ở .timeline:hover, thêm cho chữ riêng) */
+.tl-text{cursor:default}
+.tl-text b{transition:color .3s ease, text-shadow .3s ease}
+.timeline:hover .tl-item:hover .tl-text b{text-shadow:0 1px 8px rgba(140,28,19,.3)}
+
+
 </style>
 </head>
 <body>
 
-<!-- ════════ SVG SYMBOLS ════════ -->
+<!-- ════════ — SVG SYMBOLS ════════ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="orna-corner" viewBox="0 0 100 100">
@@ -740,7 +789,7 @@ body{
 <div id="deck">
 <div id="stage">
 
-<!-- ════════════════════ SLIDE 1 — BÌA ════════════════════ -->
+<!-- ════════════════════ — SLIDE 1, BÌA ════════════════════ -->
 <section class="slide cover active" data-part="" data-title="Trang bìa">
   <div class="c-frame"></div>
   <div class="c-year">1930</div>
@@ -766,7 +815,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 2 — ĐẶT VẤN ĐỀ ════════════════════ -->
+<!-- ════════════════════ — SLIDE 2, ĐẶT VẤN ĐỀ ════════════════════ -->
 <section class="slide" data-part="Phần I · Mở đầu" data-title="Đặt vấn đề">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -803,7 +852,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 3 — BỐI CẢNH 1930 ════════════════════ -->
+<!-- ════════════════════ — SLIDE 3, BỐI CẢNH 1930 ════════════════════ -->
 <section class="slide" data-part="Phần I · Mở đầu" data-title="Bối cảnh Việt Nam 1930">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -848,7 +897,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 4 — DÒNG THỜI GIAN ════════════════════ -->
+<!-- ════════════════════ — SLIDE 4, DÒNG THỜI GIAN ════════════════════ -->
 <section class="slide" data-part="Phần I · Mở đầu" data-title="Cao trào cách mạng 1930">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -889,7 +938,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 4b — TẦM QUAN TRỌNG HAI VĂN KIỆN ════════════════════ -->
+<!-- ════════════════════ — SLIDE 4b, TẦM QUAN TRỌNG HAI VĂN KIỆN ════════════════════ -->
 <section class="slide" data-part="Phần I · Mở đầu" data-title="Tầm quan trọng của hai văn kiện">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -911,7 +960,7 @@ body{
       <div class="block red" style="display:flex;flex-direction:column;padding:14px 18px">
         <div class="b-head" style="font-size:18px;margin-bottom:8px">Luận cương 10/1930 · "Cột mốc bổ sung, phát triển"</div>
         <ul style="font-size:13px;gap:5px;line-height:1.45">
-          <li><b>Hiện thực hóa con đường tiến thẳng lên CNXH</b>: gđ 1 — cách mạng tư sản kiểu mới do công nhân lãnh đạo; gđ 2 — cách mạng XHCN giải phóng con người.</li>
+          <li><b>Hiện thực hóa con đường tiến thẳng lên CNXH</b>: gđ 1, cách mạng tư sản kiểu mới do công nhân lãnh đạo; gđ 2, cách mạng XHCN giải phóng con người.</li>
           <li>Xác định <b>điều kiện chủ quan</b> (Đảng &amp; <b>liên minh công nông</b>) và <b>khách quan</b> (giúp đỡ quốc tế) để thuộc địa bỏ qua TBCN.</li>
           <li>Nâng tầm bạo lực cách mạng → giành chính quyền bằng <b>khởi nghĩa vũ trang</b>, tổ chức bài bản theo <b>"khuôn phép nhà binh"</b>.</li>
           <li><b>Hoàn thiện lý luận xây dựng Đảng kiểu mới</b>: tổ chức nghiêm ngặt, giữ vững <b>bản chất giai cấp công nhân</b>; lấy <b>Mác Lênìn</b> làm gốc, kỷ luật tập trung &amp; gắn bó quần chúng.</li>
@@ -925,7 +974,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 5 — DIVIDER PHẦN II ════════════════════ -->
+<!-- ════════════════════ — SLIDE 5, DIVIDER PHẦN II ════════════════════ -->
 <section class="slide divider" data-part="Phần II · Cương lĩnh 02/1930" data-title="▸ Phần II · Cương lĩnh chính trị">
   <div class="d-bg"><img src="images/hong-kong-1930.png" alt=""></div>
   <div class="d-frame"></div>
@@ -938,7 +987,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 6 — HOÀN CẢNH CƯƠNG LĨNH ════════════════════ -->
+<!-- ════════════════════ — SLIDE 6, HOÀN CẢNH CƯƠNG LĨNH ════════════════════ -->
 <section class="slide" data-part="Phần II · Cương lĩnh 02/1930" data-title="Hoàn cảnh ra đời (Cương lĩnh)">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -953,7 +1002,7 @@ body{
         <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">03</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Tìm đường cứu nước</strong>Năm <b>1911</b>, <b>Nguyễn Ái Quốc</b> ra đi, tìm thấy con đường <b>cách mạng vô sản</b>.</div></div>
         <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">04</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Chuẩn bị tổ chức</strong>Năm <b>1924</b> NÁQ về <b>Quảng Châu</b>; <b>6/1925</b> sáng lập <b>Hội Việt Nam Cách mạng Thanh niên</b>.</div></div>
         <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">05</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Ba tổ chức phân liệt</strong>Năm <b>1929</b>, ba tổ chức cộng sản hoạt động <b>riêng rẽ</b>, <b>tranh giành ảnh hưởng</b>.</div></div>
-        <div class="item" style="padding:11px 16px;grid-column:1 / -1"><div class="n" style="font-size:26px">06</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Hội nghị hợp nhất</strong><b>6/1 → 7/2/1930</b> tại <b>Hương Cảng</b>, hợp nhất thành <b>Đảng Cộng sản Việt Nam</b>; thông qua <b>Chánh cương &amp; Sách lược vắn tắt</b> do <b>Nguyễn Ái Quốc</b> soạn thảo — <b>Cương lĩnh chính trị đầu tiên</b>.</div></div>
+        <div class="item" style="padding:11px 16px;grid-column:1 / -1"><div class="n" style="font-size:26px">06</div><div class="t" style="font-size:13.5px;line-height:1.45"><strong style="font-size:15.5px;margin-bottom:2px">Hội nghị hợp nhất</strong><b>6/1 → 7/2/1930</b> tại <b>Hương Cảng</b>, hợp nhất thành <b>Đảng Cộng sản Việt Nam</b>; thông qua <b>Chánh cương &amp; Sách lược vắn tắt</b> do <b>Nguyễn Ái Quốc</b> soạn thảo, <b>Cương lĩnh chính trị đầu tiên</b>.</div></div>
       </div>
       <div class="vignette">
         <img src="images/nha-rong.jpg" alt="Bến Nhà Rồng">
@@ -963,7 +1012,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 7 — NỘI DUNG CƯƠNG LĨNH ════════════════════ -->
+<!-- ════════════════════ — SLIDE 7, NỘI DUNG CƯƠNG LĨNH ════════════════════ -->
 <section class="slide" data-part="Phần II · Cương lĩnh 02/1930" data-title="Nội dung Cương lĩnh 02/1930">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1002,7 +1051,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 8 — Ý NGHĨA CƯƠNG LĨNH ════════════════════ -->
+<!-- ════════════════════ — SLIDE 8, Ý NGHĨA CƯƠNG LĨNH ════════════════════ -->
 <section class="slide" data-part="Phần II · Cương lĩnh 02/1930" data-title="Ý nghĩa Cương lĩnh">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1033,7 +1082,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 9 — DIVIDER PHẦN III ════════════════════ -->
+<!-- ════════════════════ — SLIDE 9, DIVIDER PHẦN III ════════════════════ -->
 <section class="slide divider" data-part="Phần III · Luận cương 10/1930" data-title="▸ Phần III · Luận cương chính trị">
   <div class="d-bg"><img src="images/luan-cuong-manuscript.png" alt=""></div>
   <div class="d-frame"></div>
@@ -1046,7 +1095,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 10 — HOÀN CẢNH LUẬN CƯƠNG ════════════════════ -->
+<!-- ════════════════════ — SLIDE 10, HOÀN CẢNH LUẬN CƯƠNG ════════════════════ -->
 <section class="slide" data-part="Phần III · Luận cương 10/1930" data-title="Hoàn cảnh ra đời (Luận cương)">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1073,7 +1122,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 11 — NỘI DUNG LUẬN CƯƠNG ════════════════════ -->
+<!-- ════════════════════ — SLIDE 11, NỘI DUNG LUẬN CƯƠNG ════════════════════ -->
 <section class="slide" data-part="Phần III · Luận cương 10/1930" data-title="Nội dung Luận cương 10/1930">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1097,7 +1146,7 @@ body{
         </div>
         <div class="row red">
           <div class="r-label"><div class="r-num">3</div><div class="r-name">Lực lượng &amp;<br>lãnh đạo</div></div>
-          <div class="r-body">Giai cấp công nhân lãnh đạo qua Đảng — Đảng phải có <b>đường lối đúng</b>, <b>kỷ luật chặt chẽ</b>, <b>gắn bó quần chúng</b>; động lực chính là <b>công nhân &amp; nông dân</b>.</div>
+          <div class="r-body">Giai cấp công nhân lãnh đạo qua Đảng, Đảng phải có <b>đường lối đúng</b>, <b>kỷ luật chặt chẽ</b>, <b>gắn bó quần chúng</b>; động lực chính là <b>công nhân &amp; nông dân</b>.</div>
         </div>
         <div class="row red">
           <div class="r-label"><div class="r-num">4</div><div class="r-name">Phương pháp<br>cách mạng</div></div>
@@ -1112,7 +1161,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 12 — HẠN CHẾ LUẬN CƯƠNG ════════════════════ -->
+<!-- ════════════════════ — SLIDE 12, HẠN CHẾ LUẬN CƯƠNG ════════════════════ -->
 <section class="slide" data-part="Phần III · Luận cương 10/1930" data-title="Hạn chế & sự bổ sung">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1151,7 +1200,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 13 — DIVIDER PHẦN IV ════════════════════ -->
+<!-- ════════════════════ — SLIDE 13, DIVIDER PHẦN IV ════════════════════ -->
 <section class="slide divider" data-part="Phần IV · So sánh" data-title="▸ Phần IV · So sánh hai văn kiện">
   <div class="d-bg"><img src="images/mit-tinh-nha-hat-lon.png" alt=""></div>
   <div class="d-frame"></div>
@@ -1164,7 +1213,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 14 — TỔNG QUAN ĐIỂM GIỐNG ════════════════════ -->
+<!-- ════════════════════ — SLIDE 14, TỔNG QUAN ĐIỂM GIỐNG ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Điểm giống nhau · Tổng quan">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1193,7 +1242,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 14b — NỀN TẢNG & PHƯƠNG HƯỚNG ════════════════════ -->
+<!-- ════════════════════ — SLIDE 14b, NỀN TẢNG & PHƯƠNG HƯỚNG ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Giống nhau · Lý luận & Chiến lược">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1235,7 +1284,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 14c — NHIỆM VỤ CÁCH MẠNG ════════════════════ -->
+<!-- ════════════════════ — SLIDE 14c, NHIỆM VỤ CÁCH MẠNG ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Giống nhau · Nhiệm vụ cách mạng">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1291,7 +1340,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 14d — PHƯƠNG PHÁP & QUỐC TẾ ════════════════════ -->
+<!-- ════════════════════ — SLIDE 14d, PHƯƠNG PHÁP & QUỐC TẾ ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Giống nhau · Phương pháp & Quốc tế">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1320,7 +1369,7 @@ body{
           <ul>
             <li>Đoàn kết với <b>các dân tộc bị áp bức</b> &amp; <b>giai cấp vô sản thế giới</b>, đặc biệt là <b>giai cấp vô sản Pháp</b>.</li>
             <li>Kết hợp <b>chủ nghĩa yêu nước</b> với <b>chủ nghĩa quốc tế vô sản</b>.</li>
-            <li><b>Đảng Cộng sản</b> — đội tiên phong của giai cấp vô sản — là lực lượng lãnh đạo cách mạng.</li>
+            <li><b>Đảng Cộng sản</b>, đội tiên phong của giai cấp vô sản, là lực lượng lãnh đạo cách mạng.</li>
             <li>Lấy <b>chủ nghĩa Mác Lênin</b> làm <b>nền tảng tư tưởng &amp; kim chỉ nam</b> cho mọi hoạt động.</li>
           </ul>
         </div>
@@ -1333,7 +1382,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 14e — KHÁC NHAU · HOÀN CẢNH RA ĐỜI ════════════════════ -->
+<!-- ════════════════════ — SLIDE 14e, KHÁC NHAU · HOÀN CẢNH RA ĐỜI ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Khác nhau · Hoàn cảnh ra đời">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1357,7 +1406,7 @@ body{
       <div class="block red" style="display:flex;flex-direction:column">
         <div class="b-head">Luận cương 10/1930</div>
         <ul style="font-size:15.5px">
-          <li>Phong trào đấu tranh của <b>công nhân &amp; nông dân</b> phát triển mạnh mẽ — đỉnh cao là <b>cao trào Xô viết Nghệ Tĩnh</b>.</li>
+          <li>Phong trào đấu tranh của <b>công nhân &amp; nông dân</b> phát triển mạnh mẽ, đỉnh cao là <b>cao trào Xô viết Nghệ Tĩnh</b>.</li>
           <li>Ảnh hưởng <b>ngày càng rõ nét</b> từ <b>Quốc tế Cộng sản</b>.</li>
           <li>Yêu cầu khách quan phải <b>cụ thể hóa đường lối cách mạng</b> của Đảng trong giai đoạn đầu.</li>
         </ul>
@@ -1370,7 +1419,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 15 — ĐIỂM KHÁC NHAU (BẢNG) ════════════════════ -->
+<!-- ════════════════════ — SLIDE 15, ĐIỂM KHÁC NHAU (BẢNG) ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Điểm khác nhau (bảng)">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1418,7 +1467,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 16 — NGUYÊN NHÂN KHÁC BIỆT ════════════════════ -->
+<!-- ════════════════════ — SLIDE 16, NGUYÊN NHÂN KHÁC BIỆT ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Nguyên nhân khác biệt">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1441,7 +1490,7 @@ body{
         <div class="block gold" style="flex:1">
           <div class="b-head">Chủ quan · Người soạn thảo</div>
           <ul style="font-size:15px">
-            <li><b>Nguyễn Ái Quốc</b> khảo sát phong trào nhiều thuộc địa, tư duy thực tiễn sâu sắc — <b>xuất phát từ điều kiện cụ thể</b> thay vì áp dụng máy móc, ưu tiên dân tộc.</li>
+            <li><b>Nguyễn Ái Quốc</b> khảo sát phong trào nhiều thuộc địa, tư duy thực tiễn sâu sắc, <b>xuất phát từ điều kiện cụ thể</b> thay vì áp dụng máy móc, ưu tiên dân tộc.</li>
             <li><b>Trần Phú</b> đào tạo bài bản tại <b>ĐH Phương Đông (Liên Xô)</b>, tiếp cận hệ thống Mác Lênin &amp; lý luận vô sản quốc tế → chưa đánh giá đầy đủ vai trò của <b>tiểu tư sản, trí thức, tư sản dân tộc</b>.</li>
           </ul>
         </div>
@@ -1466,7 +1515,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 17 — ĐIỂM TIẾN BỘ LÝ LUẬN ════════════════════ -->
+<!-- ════════════════════ — SLIDE 17, ĐIỂM TIẾN BỘ LÝ LUẬN ════════════════════ -->
 <section class="slide" data-part="Phần IV · So sánh" data-title="Điểm tiến bộ lý luận">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1478,7 +1527,7 @@ body{
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
         <div class="quote" style="flex:none">
           <p>"Bỏ qua thời kỳ tư bản mà tranh đấu thẳng lên con đường xã hội chủ nghĩa."</p>
-          <cite>Cách mạng tư sản dân quyền là <b>"thời kỳ dự bị"</b>: đấu tranh đánh đổ đế quốc Pháp cùng phong kiến, địa chủ phản động — tạo tiền đề cho cách mạng vô sản phát triển. Điểm mới mà Chánh cương &amp; Sách lược vắn tắt chưa đề cập đầy đủ.</cite>
+          <cite>Cách mạng tư sản dân quyền là <b>"thời kỳ dự bị"</b>: đấu tranh đánh đổ đế quốc Pháp cùng phong kiến, địa chủ phản động, tạo tiền đề cho cách mạng vô sản phát triển. Điểm mới mà Chánh cương &amp; Sách lược vắn tắt chưa đề cập đầy đủ.</cite>
         </div>
         <div class="cols three" style="flex:1;grid-template-columns:1fr 1.35fr 1fr">
           <div class="block red" style="padding:14px 16px"><div class="b-head" style="font-size:19px;margin-bottom:6px">Chính trị</div>
@@ -1501,7 +1550,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 18 — GIÁ TRỊ LỊCH SỬ ════════════════════ -->
+<!-- ════════════════════ — SLIDE 18, GIÁ TRỊ LỊCH SỬ ════════════════════ -->
 <section class="slide" data-part="Phần V · Giá trị & Liên hệ" data-title="Giá trị lịch sử">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1513,11 +1562,11 @@ body{
       <div class="block gold" style="display:flex;flex-direction:column">
         <div class="b-head">Cương lĩnh 02/1930 · Giá trị</div>
         <ul style="font-size:15px">
-          <li>Xác định <b>đúng con đường</b>: <em>"tư sản dân quyền cách mạng và thổ địa cách mạng để đi tới xã hội cộng sản"</em> — gắn <b>độc lập dân tộc với CNXH</b>.</li>
+          <li>Xác định <b>đúng con đường</b>: <em>"tư sản dân quyền cách mạng và thổ địa cách mạng để đi tới xã hội cộng sản"</em>, gắn <b>độc lập dân tộc với CNXH</b>.</li>
           <li>Giải quyết đúng đắn quan hệ <b>dân tộc &amp; giai cấp</b>.</li>
           <li>Xác định đúng <b>lực lượng &amp; vai trò lãnh đạo</b> của Đảng.</li>
-          <li>Đặt <b>nền móng tư duy lý luận độc lập, sáng tạo</b> — kết hợp tinh thần dân tộc với tinh thần thời đại.</li>
-          <li>Nền móng cho <b>Cách mạng Tháng Tám</b>, các cuộc <b>kháng chiến chống thực dân – đế quốc</b>, công cuộc <b>xây dựng &amp; bảo vệ Tổ quốc</b>.</li>
+          <li>Đặt <b>nền móng tư duy lý luận độc lập, sáng tạo</b>, kết hợp tinh thần dân tộc với tinh thần thời đại.</li>
+          <li>Nền móng cho <b>Cách mạng Tháng Tám</b>, các cuộc <b>kháng chiến chống thực dân, đế quốc</b>, công cuộc <b>xây dựng &amp; bảo vệ Tổ quốc</b>.</li>
         </ul>
       </div>
       <div class="block red" style="display:flex;flex-direction:column">
@@ -1526,16 +1575,16 @@ body{
           <li>Khẳng định con đường: <b>tư sản dân quyền cách mạng</b> rồi tiến lên CNXH, <b>bỏ qua giai đoạn TBCN</b>.</li>
           <li>Xác định <b>hai nhiệm vụ chiến lược</b>: <b>chống đế quốc</b> &amp; <b>chống phong kiến</b>.</li>
           <li>Khẳng định <b>vai trò lãnh đạo của Đảng</b>, lấy <b>Mác Lênin</b> làm nền tảng tư tưởng.</li>
-          <li>Phát triển <b>lý luận phương pháp cách mạng</b> — kết hợp <b>mục tiêu trước mắt &amp; lâu dài</b>, gắn nhu yếu hằng ngày của quần chúng với mục đích lớn của Đảng.</li>
+          <li>Phát triển <b>lý luận phương pháp cách mạng</b>, kết hợp <b>mục tiêu trước mắt &amp; lâu dài</b>, gắn nhu yếu hằng ngày của quần chúng với mục đích lớn của Đảng.</li>
           <li>Khẳng định cách mạng VN <b>gắn với cách mạng thế giới</b>, đề cao đoàn kết quốc tế.</li>
-          <li>Góp phần củng cố <b>phong trào cách mạng 1930–1931</b>: xây dựng tổ chức Đảng, phát triển <b>liên minh công – nông</b>, chuẩn bị lực lượng.</li>
+          <li>Góp phần củng cố <b>phong trào cách mạng 1930–1931</b>: xây dựng tổ chức Đảng, phát triển <b>liên minh công, nông</b>, chuẩn bị lực lượng.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 18b — HẠN CHẾ HAI VĂN KIỆN ════════════════════ -->
+<!-- ════════════════════ — SLIDE 18b, HẠN CHẾ HAI VĂN KIỆN ════════════════════ -->
 <section class="slide" data-part="Phần V · Giá trị & Liên hệ" data-title="Hạn chế của hai văn kiện">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1562,7 +1611,7 @@ body{
         </div>
         <div class="callout">
           <span class="co-tag">Đánh giá</span>
-          <span class="co-text">Hạn chế của cả hai văn kiện đều mang tính <b>lịch sử cụ thể</b> — phản ánh trình độ lý luận &amp; điều kiện thực tiễn của Đảng giai đoạn <b>vừa thành lập</b>.</span>
+          <span class="co-text">Hạn chế của cả hai văn kiện đều mang tính <b>lịch sử cụ thể</b>, phản ánh trình độ lý luận &amp; điều kiện thực tiễn của Đảng giai đoạn <b>vừa thành lập</b>.</span>
         </div>
       </div>
       <div class="vignette">
@@ -1573,7 +1622,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 19 — LIÊN HỆ THỰC TẾ ════════════════════ -->
+<!-- ════════════════════ — SLIDE 19, LIÊN HỆ THỰC TẾ ════════════════════ -->
 <section class="slide" data-part="Phần V · Giá trị & Liên hệ" data-title="Liên hệ thực tế hiện nay">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1583,30 +1632,30 @@ body{
   <div class="body">
     <div class="cols two" style="flex:1;gap:14px">
       <div style="display:flex;flex-direction:column;gap:6px;min-height:0">
-        <div class="kicker" style="margin-bottom:4px;font-size:12.5px;color:var(--gold)">◆ Từ Cương lĩnh 02/1930</div>
+        <div class="kicker" style="margin-bottom:6px;font-size:14px;color:var(--gold)">◆ Từ Cương lĩnh 02/1930</div>
         <div class="numlist" style="flex:1;gap:5px">
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">01</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Kiên định mục tiêu</strong><b>Độc lập dân tộc</b> gắn liền <b>CNXH</b>, sợi chỉ đỏ xuyên suốt.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">02</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Xây dựng, chỉnh đốn Đảng</strong>Giữ <b>vai trò lãnh đạo</b>; chống <b>suy thoái</b>, <b>"tự diễn biến"</b>, <b>"tự chuyển hóa"</b>.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">03</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Đại đoàn kết toàn dân</strong>Huy động <b>mọi nguồn lực trong &amp; ngoài nước</b>, tăng <b>đồng thuận xã hội</b>.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">04</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Đối ngoại</strong><b>Độc lập, tự chủ</b>, đa phương hóa, hội nhập sâu rộng — <b>"ngoại giao cây tre"</b>.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">05</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Phát triển xã hội</strong><b>"Dân giàu, nước mạnh, dân chủ, công bằng, văn minh"</b>; <b>không để ai bị bỏ lại</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">01</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Kiên định mục tiêu</strong><b>Độc lập dân tộc</b> gắn liền <b>CNXH</b>, sợi chỉ đỏ xuyên suốt.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">02</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Xây dựng, chỉnh đốn Đảng</strong>Giữ <b>vai trò lãnh đạo</b>; chống <b>suy thoái</b>, <b>"tự diễn biến"</b>, <b>"tự chuyển hóa"</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">03</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Đại đoàn kết toàn dân</strong>Huy động <b>mọi nguồn lực trong &amp; ngoài nước</b>, tăng <b>đồng thuận xã hội</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">04</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Đối ngoại</strong><b>Độc lập, tự chủ</b>, đa phương hóa, hội nhập sâu rộng, <b>"ngoại giao cây tre"</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">05</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Phát triển xã hội</strong><b>"Dân giàu, nước mạnh, dân chủ, công bằng, văn minh"</b>; <b>không để ai bị bỏ lại</b>.</div></div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;min-height:0">
-        <div class="kicker" style="margin-bottom:4px;font-size:12.5px;color:var(--red)">◆ Từ Luận cương 10/1930</div>
+        <div class="kicker" style="margin-bottom:6px;font-size:14px;color:var(--red)">◆ Từ Luận cương 10/1930</div>
         <div class="numlist" style="flex:1;gap:5px">
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">01</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Đảng trong sạch, vững mạnh</strong>Tiếp tục xây dựng Đảng, củng cố <b>kỷ luật &amp; gắn bó quần chúng</b>.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">02</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Đổi mới sáng tạo</strong>Vận dụng sáng tạo lý luận — phát triển <b>kinh tế thị trường định hướng XHCN</b>.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">03</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Sức mạnh dân tộc + thời đại</strong>Đẩy mạnh <b>hội nhập quốc tế</b>, bảo vệ <b>lợi ích quốc gia — dân tộc</b>.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">04</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Lấy dân làm trung tâm</strong>Chăm lo đời sống nhân dân — đặt <b>người dân làm trung tâm</b> mọi chính sách phát triển.</div></div>
-          <div class="item" style="padding:7px 14px"><div class="n" style="font-size:20px">05</div><div class="t" style="font-size:13.5px;line-height:1.4"><strong style="font-size:14.5px">Bảo vệ Tổ quốc</strong>Hiện thực hóa con đường tiến lên CNXH, <b>bảo vệ vững chắc Tổ quốc</b> trong tình hình mới.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">01</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Đảng trong sạch, vững mạnh</strong>Tiếp tục xây dựng Đảng, củng cố <b>kỷ luật &amp; gắn bó quần chúng</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">02</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Đổi mới sáng tạo</strong>Vận dụng sáng tạo lý luận, phát triển <b>kinh tế thị trường định hướng XHCN</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">03</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Sức mạnh dân tộc + thời đại</strong>Đẩy mạnh <b>hội nhập quốc tế</b>, bảo vệ <b>lợi ích quốc gia, dân tộc</b>.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">04</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Lấy dân làm trung tâm</strong>Chăm lo đời sống nhân dân, đặt <b>người dân làm trung tâm</b> mọi chính sách phát triển.</div></div>
+          <div class="item" style="padding:11px 16px"><div class="n" style="font-size:26px">05</div><div class="t" style="font-size:15.5px;line-height:1.5"><strong style="font-size:17px;margin-bottom:3px;display:block">Bảo vệ Tổ quốc</strong>Hiện thực hóa con đường tiến lên CNXH, <b>bảo vệ vững chắc Tổ quốc</b> trong tình hình mới.</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 20 — TỔNG KẾT ════════════════════ -->
+<!-- ════════════════════ — SLIDE 20, TỔNG KẾT ════════════════════ -->
 <section class="slide finale" data-part="Tổng kết" data-title="Tổng kết">
   <svg class="corner tl"><use href="#orna-corner"/></svg>
   <svg class="corner br"><use href="#orna-corner"/></svg>
@@ -1630,7 +1679,7 @@ body{
   </div>
 </section>
 
-<!-- ════════════════════ SLIDE 21 — CẢM ƠN ════════════════════ -->
+<!-- ════════════════════ — SLIDE 21, CẢM ƠN ════════════════════ -->
 <section class="slide thanks" data-part="Tổng kết" data-title="Cảm ơn">
   <div class="t-bg"><img src="images/hcm-1946.jpg" alt=""></div>
   <div class="t-inner">
