@@ -73,12 +73,25 @@ body{
 .slide>*{position:relative;z-index:3}
 
 /* Ornament góc */
-.corner{position:absolute;width:90px;height:90px;opacity:.55;z-index:2;pointer-events:none}
-.corner{opacity:.85}
-.corner.tl{top:20px;left:20px}
-.corner.tr{top:20px;right:20px}
-.corner.bl{bottom:20px;left:20px}
-.corner.br{bottom:20px;right:20px}
+.corner{
+  position:absolute;width:48px;height:32px;opacity:.92;z-index:2;
+  pointer-events:auto;cursor:default;
+  filter:drop-shadow(0 2px 5px rgba(122,22,16,.25));
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),
+             opacity .3s ease, filter .3s ease;
+}
+.corner.tl{top:14px;left:22px}
+.corner.tr{top:14px;right:22px}
+.corner.bl{bottom:14px;left:22px}
+.corner.br{bottom:14px;right:22px}
+.corner:hover{
+  transform:scale(1.35) rotate(-3deg);
+  opacity:1;
+  filter:drop-shadow(0 8px 22px rgba(218,37,29,.6))
+         drop-shadow(0 0 4px rgba(255,205,0,.35));
+}
+.corner.tr:hover,.corner.bl:hover{transform:scale(1.35) rotate(3deg)}
+.corner.br:hover{transform:scale(1.35) rotate(-3deg)}
 
 .slide.active .body>*{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
 .slide.active .body>*:nth-child(1){animation-delay:.10s}
@@ -748,17 +761,12 @@ body{
 <!-- ════════ — SVG SYMBOLS ════════ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="orna-corner" viewBox="0 0 100 100">
-      <!-- Cờ đỏ sao vàng Việt Nam · đơn giản, không khung -->
-      <g transform="translate(12,28)">
-        <!-- Bóng đổ nhẹ phía sau lá cờ -->
-        <rect x="2" y="3" width="76" height="48" fill="#000" opacity="0.18" rx="2"/>
-        <!-- Lá cờ đỏ -->
-        <rect x="0" y="0" width="76" height="48" fill="#da251d" rx="2"/>
-        <!-- Sao vàng 5 cánh ở giữa lá cờ -->
-        <g transform="translate(38,24)" fill="#ffcd00">
-          <path d="M0,-15 L4.41,-4.63 L15.45,-4.63 L6.59,2.47 L9.96,13.52 L0,7.18 L-9.96,13.52 L-6.59,2.47 L-15.45,-4.63 L-4.41,-4.63 Z"/>
-        </g>
+    <symbol id="orna-corner" viewBox="0 0 90 60">
+      <!-- Cờ đỏ sao vàng Việt Nam · tỷ lệ 3:2 chuẩn quốc kỳ -->
+      <rect x="0" y="0" width="90" height="60" fill="#da251d" rx="3"/>
+      <!-- Sao vàng 5 cánh ở chính giữa -->
+      <g transform="translate(45,30)" fill="#ffcd00">
+        <path d="M0,-17 L5.0,-5.25 L17.51,-5.25 L7.48,2.81 L11.29,15.32 L0,8.13 L-11.29,15.32 L-7.48,2.81 L-17.51,-5.25 L-5.0,-5.25 Z"/>
       </g>
     </symbol>
     <symbol id="orna-divider" viewBox="0 0 200 20">
