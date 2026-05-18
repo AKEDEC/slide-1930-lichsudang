@@ -1,0 +1,1627 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>So sánh Cương lĩnh chính trị (02/1930) & Luận cương chính trị (10/1930)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════ THEME — Vintage Brown & Cream ══════════ */
+:root{
+  --paper:#f6efdf;            /* nền giấy cream chính */
+  --paper-2:#efe5d0;          /* card / panel  */
+  --paper-3:#e8dcc1;          /* nhấn */
+  --cream-deep:#dcc99e;
+  --ink:#3a2d1d;              /* chữ chính nâu đậm */
+  --ink-soft:#6b5a44;          /* chữ phụ */
+  --brown:#7a5630;            /* nâu trung */
+  --brown-dark:#4a2f15;       /* nâu đậm */
+  --red:#8c1c13;
+  --red-deep:#5b110b;
+  --gold:#a37526;
+  --gold-soft:#c9a45f;
+
+  --font-display:'Playfair Display','Cormorant Garamond',Georgia,serif;
+  --font-body:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+
+  --scale:1;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--font-body);
+  background:#1a120a;
+  color:var(--ink);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+#deck{position:fixed;inset:0;display:grid;place-items:center;
+  background:radial-gradient(140% 120% at 50% -10%,#2a1d11 0%,#120c06 60%,#0a0604 100%);
+}
+#stage{
+  width:1280px;height:720px;position:relative;flex:none;
+  transform:scale(var(--scale));transform-origin:center center;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
+}
+
+/* ────── SLIDE BASE ────── */
+.slide{
+  position:absolute;inset:0;
+  background:var(--paper);
+  color:var(--ink);
+  padding:48px 64px;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;
+  transition:opacity .45s ease;
+  overflow:hidden;
+}
+.slide.active{opacity:1;visibility:visible}
+
+/* Texture giấy cổ */
+.slide::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(140% 110% at 90% 10%,rgba(163,117,38,.10),transparent 55%),
+    radial-gradient(120% 100% at 5% 95%,rgba(140,28,19,.07),transparent 55%);
+}
+.slide>*{position:relative;z-index:3}
+
+/* Ornament góc */
+.corner{position:absolute;width:90px;height:90px;opacity:.55;z-index:2;pointer-events:none}
+.corner.tl{top:20px;left:20px}
+.corner.tr{top:20px;right:20px;transform:scaleX(-1)}
+.corner.bl{bottom:20px;left:20px;transform:scaleY(-1)}
+.corner.br{bottom:20px;right:20px;transform:scale(-1,-1)}
+
+.slide.active .body>*{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .body>*:nth-child(1){animation-delay:.10s}
+.slide.active .body>*:nth-child(2){animation-delay:.20s}
+.slide.active .body>*:nth-child(3){animation-delay:.30s}
+.slide.active .body>*:nth-child(4){animation-delay:.40s}
+.slide.active .body>*:nth-child(5){animation-delay:.50s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ────── HEADERS ────── */
+.kicker{
+  font-size:14px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--brown);display:flex;align-items:center;gap:14px;margin-bottom:10px;
+}
+.kicker::before{content:"";width:38px;height:1.5px;background:var(--gold);display:block}
+.s-title{
+  font-family:var(--font-display);font-weight:800;line-height:1.02;
+  font-size:52px;color:var(--brown-dark);letter-spacing:-.005em;
+}
+.s-title em{font-style:italic;color:var(--red);font-weight:700}
+.rule{height:2px;width:90px;background:var(--brown-dark);margin:12px 0 0;border-radius:1px}
+
+/* Ornament divider line */
+.orna{display:flex;align-items:center;gap:14px;margin:6px 0;color:var(--brown);opacity:.7}
+.orna .l{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--brown) 50%,transparent)}
+.orna svg{width:22px;height:22px;flex:none;color:var(--brown)}
+
+.body{margin-top:18px;flex:1;display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden}
+
+/* ────── PANELS / CARDS ────── */
+.panel{
+  background:rgba(255,250,238,.85);
+  border:1.5px solid rgba(122,86,48,.25);
+  border-radius:10px;padding:18px 22px;
+  font-size:18px;line-height:1.55;color:var(--ink);
+  box-shadow:0 2px 0 rgba(122,86,48,.08);
+}
+.panel b{color:var(--brown-dark);font-weight:700}
+.panel.accent{border-left:4px solid var(--red)}
+.panel.gold{border-left:4px solid var(--gold)}
+
+/* Grid layouts */
+.cols{display:grid;gap:16px;flex:1;min-height:0}
+.cols > *{min-width:0;min-height:0}
+.cols.two{grid-template-columns:1fr 1fr}
+.cols.three{grid-template-columns:repeat(3,1fr)}
+.cols.split-r{grid-template-columns:1fr 1.1fr}
+.cols.split-l{grid-template-columns:1.1fr 1fr}
+.cols.aside-r{grid-template-columns:1fr 360px}
+.cols.aside-l{grid-template-columns:360px 1fr}
+
+/* ────── BLOCK với head ──────*/
+.block{
+  background:rgba(255,250,238,.85);
+  border:1.5px solid rgba(122,86,48,.22);
+  border-radius:10px;padding:20px 22px;
+  display:flex;flex-direction:column;gap:10px;
+  box-shadow:0 2px 0 rgba(122,86,48,.06);
+}
+.block .b-head{
+  font-family:var(--font-display);font-weight:700;font-size:22px;
+  color:var(--brown-dark);display:flex;align-items:center;gap:10px;
+  letter-spacing:.005em;
+}
+.block .b-head::before{
+  content:"";width:8px;height:8px;background:var(--gold);
+  transform:rotate(45deg);flex:none;
+}
+.block.red .b-head::before{background:var(--red)}
+.block ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.block li{
+  font-size:17px;line-height:1.55;color:var(--ink);
+  padding-left:18px;position:relative;
+}
+.block li::before{
+  content:"❖";position:absolute;left:0;top:0;color:var(--brown);font-size:12px;
+}
+.block li b{color:var(--brown-dark);font-weight:700}
+
+/* ────── NUMBER LIST (PHẦN II/III/IV) ────── */
+.numlist{display:flex;flex-direction:column;gap:11px;min-height:0;overflow:hidden}
+.numlist .item{
+  display:grid;grid-template-columns:62px 1fr;gap:18px;align-items:start;
+  background:rgba(255,250,238,.85);
+  border:1.5px solid rgba(122,86,48,.22);
+  border-radius:10px;padding:14px 20px;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease,
+    border-color .3s ease, background .3s ease;
+}
+.numlist:hover .item{opacity:.55;filter:saturate(.65)}
+.numlist:hover .item:hover{
+  opacity:1;filter:none;
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  background:rgba(255,250,238,1);
+  box-shadow:0 14px 30px -14px rgba(74,47,21,.35);
+}
+.numlist .item{transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease,
+    border-color .3s ease, background .3s ease, opacity .3s ease, filter .3s ease}
+.numlist .n{
+  font-family:var(--font-display);font-weight:800;font-size:30px;
+  color:var(--brown-dark);text-align:center;line-height:1.1;
+  border-bottom:2px solid var(--gold);padding-bottom:2px;
+  transition:color .3s ease, border-color .3s ease;
+}
+.numlist:hover .item:hover .n{color:var(--red);border-color:var(--red)}
+.numlist .t{font-size:16px;line-height:1.5;color:var(--ink)}
+.numlist .t strong{display:block;color:var(--brown-dark);font-weight:700;
+  font-size:18px;margin-bottom:3px;
+  font-family:var(--font-display);
+}
+.numlist .t b{color:var(--brown-dark);font-weight:700}
+
+/* ────── ROW (trụ cột số) ────── */
+.row{
+  display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:center;
+  background:rgba(255,250,238,.85);
+  border:1.5px solid rgba(122,86,48,.22);
+  border-radius:10px;padding:13px 22px;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease,
+    background .3s ease, opacity .3s ease, filter .3s ease;
+}
+/* Khi hover container chứa nhiều row sẽ làm mờ row khác */
+[class*="display"]:hover > .row, body:not(.x):hover .row{opacity:1}
+.row:hover{
+  transform:translateY(-3px) translateX(2px);
+  background:rgba(255,250,238,1);
+  box-shadow:0 14px 28px -12px rgba(74,47,21,.32);
+  border-color:var(--gold);
+}
+.row .r-num{transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease}
+.row:hover .r-num{transform:scale(1.06);box-shadow:0 8px 16px -6px rgba(74,47,21,.4)}
+.row .r-label{display:flex;gap:14px;align-items:center}
+.row .r-num{
+  font-family:var(--font-display);font-weight:800;font-size:28px;
+  color:#fff;background:var(--brown-dark);width:48px;height:48px;flex:none;
+  display:grid;place-items:center;border-radius:10px;
+}
+.row.gold .r-num{background:var(--gold)}
+.row.red .r-num{background:var(--red)}
+.row .r-name{font-family:var(--font-display);font-weight:700;font-size:18px;
+  line-height:1.2;color:var(--brown-dark)}
+.row .r-body{font-size:16px;line-height:1.5;color:var(--ink)}
+.row .r-body b{color:var(--brown-dark);font-weight:700}
+
+/* ────── TIMELINE (Interactive) ────── */
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;align-content:center;
+  padding:8px 0;
+}
+.tl-item{
+  padding:0 10px;position:relative;display:flex;flex-direction:column;align-items:center;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1), opacity .35s ease, filter .35s ease;
+  cursor:default;
+}
+.tl-line{position:absolute;top:48px;left:0;right:0;height:2px;background:var(--brown);opacity:.3}
+.tl-year{
+  font-family:var(--font-display);font-weight:700;font-size:16px;color:#fff;
+  background:var(--brown-dark);padding:8px 6px;border-radius:6px;width:100%;text-align:center;
+  position:relative;z-index:2;
+  box-shadow:0 4px 10px -4px rgba(74,47,21,.25);
+  transition:background .35s ease, box-shadow .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold);
+  border:3px solid var(--paper);margin:14px 0;position:relative;z-index:2;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, background .35s ease;
+}
+.tl-text{font-size:14.5px;line-height:1.4;color:var(--ink);text-align:center;
+  transition:color .35s ease;
+}
+.tl-text b{color:var(--brown-dark);font-weight:700}
+
+/* Hover interaction: focus active item, dim others */
+.timeline:hover .tl-item{opacity:.42;filter:saturate(.55) blur(.4px)}
+.timeline:hover .tl-item:hover{
+  opacity:1;filter:none;transform:translateY(-8px) scale(1.05);z-index:5;
+}
+.timeline:hover .tl-item:hover .tl-year{
+  background:linear-gradient(135deg,var(--red) 0%,var(--red-deep) 100%);
+  box-shadow:0 10px 24px -6px rgba(140,28,19,.5);
+  transform:translateY(-2px);
+}
+.timeline:hover .tl-item:hover .tl-dot{
+  transform:scale(1.6);
+  background:var(--red);
+  box-shadow:0 0 0 6px rgba(163,117,38,.22),0 0 0 12px rgba(163,117,38,.10);
+}
+.timeline:hover .tl-item:hover .tl-text{color:var(--brown-dark)}
+.timeline:hover .tl-item:hover .tl-text b{color:var(--red-deep)}
+
+/* ────── CALLOUT ────── */
+.callout{
+  background:linear-gradient(135deg,var(--brown-dark) 0%,#3a2814 100%);
+  color:#f5e8d2;border-radius:10px;padding:16px 22px;
+  display:flex;align-items:center;gap:18px;
+  border:1px solid rgba(201,164,95,.3);
+}
+.callout .co-tag{
+  font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-soft);border:1px solid rgba(201,164,95,.4);
+  padding:6px 12px;border-radius:5px;flex:none;
+}
+.callout .co-text{font-size:16.5px;line-height:1.45;font-weight:400}
+.callout .co-text b{color:#ffd28a;font-weight:700}
+
+/* ────── QUOTE ────── */
+.quote{
+  border-left:3px solid var(--gold);
+  background:rgba(255,250,238,.6);
+  padding:18px 26px;border-radius:0 10px 10px 0;
+}
+.quote p{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:22px;
+  line-height:1.4;color:var(--brown-dark)}
+.quote cite{display:block;margin-top:10px;font-size:14px;font-style:normal;
+  color:var(--ink-soft);font-weight:600;letter-spacing:.04em}
+
+/* ────── COMPARISON TABLE ────── */
+.ctable{display:flex;flex-direction:column;
+  border:1.5px solid rgba(122,86,48,.3);
+  border-radius:10px;overflow:hidden;flex:1;
+  background:rgba(255,250,238,.7);
+}
+.ctable .ct-head,.ctable .ct-row{display:grid;grid-template-columns:1.05fr 1.45fr 1.45fr}
+.ctable .ct-head>div{
+  padding:14px 18px;font-weight:800;font-size:15.5px;color:#fff;
+  display:flex;align-items:center;gap:8px;font-family:var(--font-display);letter-spacing:.01em;
+}
+.ct-head .h0{background:var(--brown-dark)}
+.ct-head .h1{background:var(--gold)}
+.ct-head .h2{background:var(--red)}
+.ctable .ct-row>div{padding:12px 18px;font-size:15px;line-height:1.45;
+  border-top:1px solid rgba(122,86,48,.18)}
+.ctable .ct-row .c0{font-weight:700;color:var(--brown-dark);
+  background:rgba(220,201,158,.35);display:flex;align-items:center;
+  font-family:var(--font-display);font-size:16px;}
+.ctable .ct-row .c1{color:var(--ink);background:rgba(163,117,38,.07)}
+.ctable .ct-row .c2{color:var(--ink);background:rgba(140,28,19,.06)}
+.ctable .ct-row .c1 b,.ctable .ct-row .c2 b{color:var(--brown-dark);font-weight:700}
+
+/* ════════ KHUNG ẢNH ════════ */
+.frame{
+  position:relative;border-radius:8px;overflow:hidden;
+  background:var(--paper-2);
+  border:6px solid #fff;
+  box-shadow:0 14px 30px -14px rgba(58,45,29,.5),0 0 0 1px rgba(122,86,48,.2);
+  display:flex;flex-direction:column;
+}
+.frame img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:sepia(.08) contrast(1.02)}
+.frame .f-cap{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:11px 16px;
+  background:linear-gradient(0deg,rgba(30,20,10,.88) 0%,rgba(30,20,10,.5) 65%,transparent 100%);
+  color:#f5e8d2;font-size:13px;line-height:1.35;font-weight:500;
+}
+.frame .f-cap b{color:var(--gold-soft);font-weight:700}
+.frame .f-tag{
+  position:absolute;top:12px;left:12px;font-size:10px;letter-spacing:.2em;
+  font-weight:800;text-transform:uppercase;color:#fff;
+  background:var(--brown-dark);padding:5px 11px;border-radius:4px;z-index:3;
+}
+.frame.gold .f-tag{background:var(--gold)}
+.frame.red .f-tag{background:var(--red)}
+.frame.fill{flex:1;min-height:0}
+.frame.fluid{flex:1;min-height:0}
+
+/* Vignette image (fades into page) */
+.vignette{
+  position:relative;flex:1;min-height:0;
+  border-radius:10px;overflow:hidden;
+}
+.vignette img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:sepia(.12) contrast(1.03) brightness(.96)}
+.vignette::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 50%,var(--paper) 100%);
+  pointer-events:none;
+}
+.vignette.fade-l::after{background:linear-gradient(-90deg,transparent 50%,var(--paper) 100%)}
+.vignette.fade-b::after{background:linear-gradient(0deg,var(--paper) 0%,transparent 50%)}
+/* Caption nằm dưới ảnh vignette */
+.vignette .v-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  padding:10px 16px;
+  background:linear-gradient(0deg,rgba(20,12,6,.92) 0%,rgba(20,12,6,.55) 65%,transparent 100%);
+  color:#f4ecd7;font-size:13.5px;line-height:1.4;font-weight:500;
+}
+.vignette .v-cap b{color:#e6c178;font-weight:700}
+.vignette .v-cap em{font-style:italic;color:#d6b78a;font-weight:400}
+
+/* Polaroid */
+.polaroid{
+  background:#fff;padding:10px 10px 36px 10px;border-radius:3px;
+  box-shadow:0 16px 30px -14px rgba(58,45,29,.5),0 4px 10px -4px rgba(58,45,29,.2);
+  position:relative;
+}
+.polaroid img{width:100%;display:block;border-radius:2px;
+  filter:sepia(.1) contrast(1.02)}
+.polaroid .p-text{
+  position:absolute;left:10px;right:10px;bottom:9px;text-align:center;
+  font-family:var(--font-display);font-style:italic;font-size:14px;color:var(--brown);
+}
+.polaroid.tilt-l{transform:rotate(-1.8deg)}
+.polaroid.tilt-r{transform:rotate(1.8deg)}
+
+/* ════════ COVER SLIDE ════════ */
+.cover{
+  background:
+    radial-gradient(120% 110% at 18% 24%,#4a2c14 0%,#231405 60%,#160b03 100%);
+  color:var(--paper);padding:0;
+}
+.cover::before{display:none}
+/* texture nhẹ trên nền */
+.cover::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:
+    radial-gradient(80% 60% at 85% 15%,rgba(201,164,95,.10),transparent 60%),
+    radial-gradient(70% 55% at 10% 85%,rgba(140,28,19,.12),transparent 55%);
+}
+.cover .c-frame{position:absolute;inset:30px;border:1.5px solid rgba(201,164,95,.45);z-index:3;
+  pointer-events:none}
+.cover .c-frame::before,.cover .c-frame::after{
+  content:"";position:absolute;width:28px;height:28px;
+  border:1.5px solid rgba(201,164,95,.45);
+}
+.cover .c-frame::before{top:-8px;left:-8px;border-right:none;border-bottom:none}
+.cover .c-frame::after{bottom:-8px;right:-8px;border-left:none;border-top:none}
+.cover .c-grid{
+  position:relative;z-index:5;height:100%;
+  display:grid;grid-template-columns:1.3fr 1fr;
+  padding:70px 80px;gap:60px;
+}
+.cover .c-left{display:flex;flex-direction:column;height:100%}
+.cover .c-course{
+  font-size:14px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold-soft);display:flex;gap:14px;align-items:center}
+.cover .c-course::before{content:"";width:36px;height:1.5px;background:var(--gold-soft)}
+.cover .c-orna{
+  width:200px;margin:14px 0 10px;opacity:.7;color:var(--gold-soft)
+}
+.cover .c-big{
+  font-family:var(--font-display);font-weight:900;font-size:88px;line-height:.98;
+  margin-top:auto;letter-spacing:-.02em;color:#f4ecd7;
+}
+.cover .c-big em{font-style:italic;color:var(--gold-soft);font-weight:700}
+.cover .c-sub{font-size:18px;color:#d6c4a8;margin-top:18px;max-width:36ch;line-height:1.5;
+  font-style:italic;font-family:var(--font-display)}
+.cover .c-foot{margin-top:auto;display:flex;justify-content:space-between;
+  align-items:flex-end;border-top:1px solid rgba(201,164,95,.32);padding-top:20px;
+  max-width:560px}
+.cover .c-foot .lab{font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-soft);font-weight:700;margin-bottom:6px}
+.cover .c-foot .val{font-size:16px;color:#efe4d6;font-weight:500}
+.cover .c-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+  gap:18px}
+.cover .c-portrait{
+  width:100%;max-width:360px;aspect-ratio:3/4;
+  border:10px solid #f4ecd7;border-radius:3px;
+  box-shadow:0 30px 60px -16px rgba(0,0,0,.7);
+  position:relative;overflow:hidden;
+  transform:rotate(1.5deg);
+}
+.cover .c-portrait img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:sepia(.18) contrast(1.05) saturate(.95)}
+.cover .c-source{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(201,164,95,.85);font-weight:700;
+  align-self:flex-end;
+}
+.cover .c-source b{color:#fff;font-weight:800;letter-spacing:.06em;
+  text-transform:none;font-size:14px;margin-left:8px;
+  font-family:var(--font-display);font-style:italic;}
+.cover .c-year{
+  position:absolute;right:50px;top:34px;z-index:8;pointer-events:none;
+  font-family:var(--font-display);font-weight:900;font-size:120px;line-height:.85;
+  letter-spacing:.01em;
+  background:linear-gradient(180deg,#f6dfa6 0%,#e8c074 35%,#c9a45f 65%,#8a6a2c 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1.2px rgba(246,223,166,.85);
+  filter:drop-shadow(0 6px 18px rgba(201,164,95,.45))
+         drop-shadow(0 2px 4px rgba(0,0,0,.55));
+  text-shadow:0 0 28px rgba(201,164,95,.35);
+}
+
+/* ════════ DIVIDER SLIDE (between parts) ════════ */
+.slide.divider{
+  background:#1a1208;color:var(--paper);padding:0;
+}
+.slide.divider::before{display:none}
+.slide.divider .d-bg{position:absolute;inset:0;z-index:1;overflow:hidden}
+.slide.divider .d-bg img{width:100%;height:100%;object-fit:cover;
+  filter:sepia(.25) contrast(1.05) brightness(.5)}
+.slide.divider .d-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(26,18,8,.92) 0%,rgba(26,18,8,.55) 60%,rgba(26,18,8,.3) 100%);
+}
+.slide.divider .d-frame{position:absolute;inset:30px;
+  border:1.5px solid rgba(201,164,95,.35);z-index:3;pointer-events:none}
+.slide.divider .d-grid{
+  position:relative;z-index:5;height:100%;padding:70px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.slide.divider .d-num{
+  font-family:var(--font-display);font-weight:800;font-size:160px;
+  color:transparent;-webkit-text-stroke:2px rgba(201,164,95,.7);line-height:.9;
+  margin-bottom:4px;
+}
+.slide.divider .d-kicker{
+  font-size:14px;font-weight:700;letter-spacing:.36em;text-transform:uppercase;
+  color:var(--gold-soft);margin:14px 0 14px;
+}
+.slide.divider .d-title{
+  font-family:var(--font-display);font-weight:800;font-size:74px;line-height:1.02;
+  max-width:18ch;color:#f4ecd7;letter-spacing:-.015em;
+}
+.slide.divider .d-title em{font-style:italic;color:var(--gold-soft)}
+.slide.divider .d-rule{height:2px;width:120px;background:var(--gold-soft);margin:30px 0 18px;opacity:.8}
+.slide.divider .d-by{font-size:16px;color:#d6c4a8;font-style:italic;
+  font-family:var(--font-display)}
+.slide.divider .d-by b{color:#fff;font-weight:600;font-style:normal;
+  font-family:var(--font-body)}
+
+/* ════════ FINALE SLIDE ════════ */
+.slide.finale{justify-content:center}
+.finale .f-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;
+  align-items:center;height:100%;padding-top:30px}
+.finale .f-portrait{
+  width:100%;aspect-ratio:3/4;border-radius:3px;overflow:hidden;
+  border:10px solid #fff;
+  box-shadow:0 25px 50px -20px rgba(58,45,29,.45);
+  position:relative;
+}
+.finale .f-portrait img{width:100%;height:100%;object-fit:cover;
+  filter:sepia(.1) contrast(1.02)}
+
+/* ════════ THANK YOU SLIDE ════════ */
+.slide.thanks{
+  background:#1a1208;color:var(--paper);padding:0;
+}
+.slide.thanks::before{display:none}
+.slide.thanks .t-bg{position:absolute;inset:0;z-index:1;overflow:hidden}
+.slide.thanks .t-bg img{width:100%;height:100%;object-fit:cover;
+  filter:sepia(.3) contrast(1.05) brightness(.45)}
+.slide.thanks .t-bg::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(80% 70% at 50% 50%,rgba(26,18,8,.35) 0%,rgba(26,18,8,.85) 100%);
+}
+.slide.thanks .t-inner{
+  position:relative;z-index:5;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:60px;
+}
+.slide.thanks .t-orna{width:480px;height:36px;color:rgba(201,164,95,.7);margin-bottom:18px}
+.slide.thanks .t-big{font-family:var(--font-display);font-weight:800;font-size:108px;
+  letter-spacing:-.01em;line-height:1;color:#f4ecd7;}
+.slide.thanks .t-big em{font-style:italic;color:var(--gold-soft);font-weight:800}
+.slide.thanks .t-sub{font-family:var(--font-display);font-style:italic;
+  font-size:22px;color:#d6c4a8;margin-top:20px}
+.slide.thanks .t-sub b{color:#fff;font-style:normal;font-weight:600;font-family:var(--font-body)}
+
+/* ════════ NAV CHROME ════════ */
+#progress{position:fixed;top:0;left:0;height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--red));
+  z-index:50;transition:width .42s ease;box-shadow:0 0 12px rgba(163,117,38,.5)}
+#chrome{position:fixed;left:0;right:0;bottom:0;height:46px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;color:#d8c9bb;font-size:12.5px;
+  background:linear-gradient(0deg,rgba(10,7,6,.92),transparent)}
+#chrome .seg{display:flex;align-items:center;gap:12px}
+#partlabel{font-weight:700;letter-spacing:.04em;color:#e7d9c8}
+#counter{font-variant-numeric:tabular-nums;font-weight:600;
+  background:rgba(255,255,255,.08);padding:4px 11px;border-radius:20px}
+.navbtn{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  color:#f0e4d6;width:32px;height:32px;border-radius:7px;cursor:pointer;
+  display:grid;place-items:center;transition:.15s;font-size:15px;
+}
+.navbtn:hover{background:var(--brown-dark);border-color:var(--brown-dark)}
+.navbtn svg{width:15px;height:15px}
+#chrome .hint{opacity:.6;letter-spacing:.03em}
+
+#menu{position:fixed;inset:0;z-index:80;background:rgba(10,7,6,.93);
+  display:none;padding:54px;overflow:auto}
+#menu.open{display:block}
+#menu h3{color:var(--gold-soft);font-family:var(--font-display);font-size:26px;
+  margin-bottom:6px}
+#menu .m-sub{color:#9c8d7f;font-size:13px;margin-bottom:24px}
+#menu .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:1000px}
+#menu .m-item{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:12px 15px;cursor:pointer;color:#e6d8ca;
+  display:flex;gap:12px;align-items:center;transition:.15s;
+}
+#menu .m-item:hover{background:var(--brown-dark);border-color:var(--brown-dark)}
+#menu .m-item.cur{border-color:var(--gold);background:rgba(163,117,38,.16)}
+#menu .m-item .mi-n{font-family:var(--font-display);font-weight:800;color:var(--gold-soft);
+  font-size:18px;min-width:30px}
+#menu .m-item .mi-t{font-size:14px;line-height:1.3;font-weight:500}
+
+#help{position:fixed;inset:0;z-index:90;background:rgba(10,7,6,.93);
+  display:none;place-items:center}
+#help.open{display:grid}
+#help .h-card{background:var(--paper);color:var(--ink);border-radius:12px;
+  padding:34px 40px;max-width:430px}
+#help h3{font-family:var(--font-display);font-size:26px;color:var(--brown-dark);margin-bottom:16px}
+#help .kb{display:flex;justify-content:space-between;padding:8px 0;
+  border-bottom:1px solid rgba(122,86,48,.18);font-size:14.5px}
+#help .kb:last-child{border:none}
+#help kbd{background:var(--brown-dark);color:#fff;padding:3px 9px;border-radius:5px;
+  font-family:var(--font-body);font-size:12px;font-weight:600}
+#help .close{margin-top:18px;width:100%;background:var(--brown-dark);color:#fff;border:none;
+  padding:11px;border-radius:8px;cursor:pointer;font-weight:700;font-family:var(--font-body)}
+
+@media print{
+  @page{size:1280px 720px;margin:0}
+  body{overflow:visible;background:#fff}
+  #deck{position:static;display:block}
+  #stage{transform:none;width:1280px;height:auto;box-shadow:none}
+  .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;
+    page-break-after:always;width:1280px;height:720px}
+  .slide .body>*{animation:none!important}
+  #progress,#chrome,#menu,#help{display:none!important}
+}
+
+/* ════════ NUMBER BADGE (thay thế ①②③ ④⑤) ════════ */
+.bnum{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;
+  font-family:var(--font-body);font-weight:800;font-size:17px;
+  background:linear-gradient(135deg,#c9a45f 0%,#a37526 60%,#7a5424 100%);
+  color:#fff;letter-spacing:0;line-height:1;
+  margin-right:12px;vertical-align:-7px;
+  box-shadow:0 4px 10px -3px rgba(74,47,21,.45),
+             inset 0 0 0 1px rgba(255,255,255,.22),
+             inset 0 -2px 4px rgba(0,0,0,.18);
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),
+             box-shadow .3s ease, background .3s ease;
+}
+.bnum.red{background:linear-gradient(135deg,#b03328 0%,#8c1c13 60%,#5b110b 100%)}
+.s-title .bnum{width:52px;height:52px;font-size:24px;vertical-align:-14px;margin-right:16px}
+
+/* hover lift cho .bnum đi cùng container hover */
+.block:hover .bnum,.panel:hover .bnum,.s-title .bnum:hover{
+  transform:translateY(-2px) scale(1.04);
+  box-shadow:0 8px 18px -4px rgba(74,47,21,.55),
+             inset 0 0 0 1px rgba(255,255,255,.3);
+}
+.numlist .n{font-feature-settings:"lnum" 1}
+
+/* ════════ HOVER UX cho các khung chữ ════════ */
+.block,.panel,.callout,.quote{
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),
+             box-shadow .35s ease,
+             border-color .35s ease,
+             background .35s ease;
+  will-change:transform;
+}
+.block:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  background:rgba(255,250,238,1);
+  box-shadow:0 16px 32px -14px rgba(74,47,21,.38),
+             0 2px 0 rgba(122,86,48,.1);
+}
+.block.red:hover{border-color:var(--red)}
+.block:hover .b-head{color:var(--brown-dark)}
+.block:hover .b-head::before{transform:rotate(45deg) scale(1.25);background:var(--gold)}
+.block.red:hover .b-head::before{background:var(--red)}
+.block .b-head::before{transition:transform .35s cubic-bezier(.2,.7,.2,1), background .3s ease}
+
+.panel:hover{
+  transform:translateY(-3px);
+  border-color:rgba(163,117,38,.55);
+  background:rgba(255,250,238,1);
+  box-shadow:0 14px 28px -12px rgba(74,47,21,.32);
+}
+.panel.accent:hover{border-left-color:var(--red);border-left-width:5px}
+.panel.gold:hover{border-left-color:var(--gold);border-left-width:5px}
+
+.callout{cursor:default}
+.callout:hover{
+  transform:translateY(-3px);
+  border-color:rgba(201,164,95,.6);
+  box-shadow:0 18px 34px -14px rgba(0,0,0,.55),
+             inset 0 0 0 1px rgba(201,164,95,.2);
+}
+.callout:hover .co-tag{
+  background:rgba(201,164,95,.18);
+  color:#ffd28a;border-color:rgba(201,164,95,.7);
+}
+.callout .co-tag{transition:background .3s ease, color .3s ease, border-color .3s ease}
+
+.quote{transition:border-left-width .3s ease, background .3s ease, transform .3s ease,
+                  box-shadow .3s ease}
+.quote:hover{
+  border-left-width:6px;
+  background:rgba(255,250,238,.92);
+  transform:translateX(3px);
+  box-shadow:0 10px 22px -12px rgba(74,47,21,.28);
+}
+
+/* Comparison table row hover */
+.ctable .ct-row{transition:background .3s ease, transform .3s ease}
+.ctable .ct-row:hover{transform:translateX(2px)}
+.ctable .ct-row:hover .c0{background:rgba(220,201,158,.6)}
+.ctable .ct-row:hover .c1{background:rgba(163,117,38,.14)}
+.ctable .ct-row:hover .c2{background:rgba(140,28,19,.12)}
+
+/* Frame ảnh: hover nâng nhẹ */
+.frame{transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease}
+.frame:hover{
+  transform:translateY(-4px) scale(1.01);
+  box-shadow:0 22px 40px -16px rgba(58,45,29,.6),0 0 0 1px rgba(122,86,48,.28);
+}
+.frame:hover .f-tag{filter:brightness(1.1)}
+
+</style>
+</head>
+<body>
+
+<!-- ════════ SVG SYMBOLS ════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="orna-corner" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M2 2 L60 2"/>
+        <path d="M2 2 L2 60"/>
+        <path d="M70 2 L80 2 Q85 2 85 7 L85 12"/>
+        <path d="M2 70 L2 80 Q2 85 7 85 L12 85"/>
+        <circle cx="2" cy="2" r="3"/>
+        <path d="M20 2 Q25 8 30 2 M30 2 Q35 8 40 2"/>
+        <path d="M2 20 Q8 25 2 30 M2 30 Q8 35 2 40"/>
+        <path d="M14 14 L24 14 L24 24 M14 14 L14 24"/>
+      </g>
+    </symbol>
+    <symbol id="orna-divider" viewBox="0 0 200 20">
+      <g fill="currentColor" stroke="currentColor" stroke-width="1">
+        <line x1="0" y1="10" x2="80" y2="10"/>
+        <line x1="120" y1="10" x2="200" y2="10"/>
+        <path d="M100 4 L106 10 L100 16 L94 10 Z" fill="currentColor"/>
+        <circle cx="85" cy="10" r="1.5"/>
+        <circle cx="115" cy="10" r="1.5"/>
+      </g>
+    </symbol>
+    <symbol id="orna-flourish" viewBox="0 0 200 30">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M10 15 Q40 5 70 15 T130 15 T190 15"/>
+        <path d="M100 8 Q100 12 96 14 M100 8 Q100 12 104 14"/>
+        <circle cx="100" cy="15" r="2" fill="currentColor"/>
+        <path d="M5 15 L0 15 M195 15 L200 15"/>
+      </g>
+    </symbol>
+    <symbol id="star" viewBox="0 0 100 100">
+      <path d="M50 4 61.8 38.2 97.6 38.2 68.9 59.3 80.6 93.5 50 72.4 19.4 93.5 31.1 59.3 2.4 38.2 38.2 38.2Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="progress"></div>
+
+<div id="deck">
+<div id="stage">
+
+<!-- ════════════════════ SLIDE 1 — BÌA ════════════════════ -->
+<section class="slide cover active" data-part="" data-title="Trang bìa">
+  <div class="c-frame"></div>
+  <div class="c-year">1930</div>
+  <div class="c-grid">
+    <div class="c-left">
+      <div class="c-course">Lịch sử Đảng Cộng sản Việt Nam</div>
+      <svg class="c-orna"><use href="#orna-flourish"/></svg>
+      <h1 class="c-big">Cương lĩnh<br>chính trị<br><em>&</em> Luận cương</h1>
+      <p class="c-sub">So sánh hai văn kiện chính trị đặt nền móng cho cách mạng Việt Nam</p>
+      <div class="c-foot" style="justify-content:flex-start">
+        <div>
+          <div class="lab">Lớp thuyết trình</div>
+          <div class="val">CLC-QTL49A</div>
+        </div>
+      </div>
+    </div>
+    <div class="c-right">
+      <div class="c-portrait">
+        <img src="images/hcm-cover.jpg" alt="Chủ tịch Hồ Chí Minh">
+      </div>
+      <div class="c-source">Nguồn ảnh<b>Pinterest</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 2 — ĐẶT VẤN ĐỀ ════════════════════ -->
+<section class="slide" data-part="Phần I · Mở đầu" data-title="Đặt vấn đề">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Phần I · Mở đầu</div>
+  <h2 class="s-title">Đặt vấn đề</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:0">
+        <div class="block">
+          <div class="b-head">Bối cảnh lịch sử</div>
+          <ul>
+            <li><b>Năm 1930</b> là cột mốc đặc biệt: Đảng Cộng sản Việt Nam ra đời.</li>
+            <li>Liên tiếp thông qua hai văn kiện chính trị cốt lõi định hình đường lối cách mạng.</li>
+          </ul>
+        </div>
+        <div class="block red">
+          <div class="b-head">Hai văn kiện trọng đại</div>
+          <ul>
+            <li><b>Cương lĩnh chính trị đầu tiên (02/1930)</b> gồm Chánh cương vắn tắt &amp; Sách lược vắn tắt.</li>
+            <li><b>Luận cương chính trị (10/1930)</b> do đồng chí Trần Phú khởi thảo.</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="co-tag">Vì sao quan trọng</span>
+          <span class="co-text">So sánh giúp hiểu rõ quá trình <b>hình thành và hoàn thiện</b> đường lối cách mạng của Đảng.</span>
+        </div>
+      </div>
+      <div class="vignette">
+        <img src="images/hcm-1946.jpg" alt="Chủ tịch Hồ Chí Minh">
+        <div class="v-cap"><b>Chủ tịch Hồ Chí Minh</b> <em>· chân dung 1946</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 3 — BỐI CẢNH 1930 ════════════════════ -->
+<section class="slide" data-part="Phần I · Mở đầu" data-title="Bối cảnh Việt Nam 1930">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Phần I · Mở đầu</div>
+  <h2 class="s-title">Bối cảnh Việt Nam <em>năm 1930</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols three" style="flex:1">
+      <div class="block">
+        <div class="b-head">Tác động quốc tế</div>
+        <ul>
+          <li>Khủng hoảng kinh tế thế giới <b>1929 → 1933</b> khiến sản xuất đình đốn.</li>
+          <li>Liên Xô đạt thành tựu rực rỡ; phong trào cách mạng dâng cao.</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-self:center">
+        <div class="polaroid tilt-l" style="padding:8px 8px 28px 8px">
+          <img src="images/farmers-arrested.png" alt="Nông dân Đông Dương" style="max-height:170px;object-fit:cover">
+          <div class="p-text" style="font-size:12.5px;bottom:7px">Nông dân Đông Dương</div>
+        </div>
+        <div class="polaroid tilt-r" style="padding:8px 8px 28px 8px">
+          <img src="images/hanoi-police.jpg" alt="Cảnh sát Pháp tại Hà Nội 1900" style="max-height:170px;object-fit:cover">
+          <div class="p-text" style="font-size:12.5px;bottom:7px">Cảnh sát Pháp tại Hà Nội</div>
+        </div>
+      </div>
+      <div class="block red">
+        <div class="b-head">Tình hình trong nước</div>
+        <ul>
+          <li>Pháp tăng cường <b>bóc lột thuộc địa</b> để bù đắp thiệt hại chính quốc.</li>
+          <li>Chiến dịch <b>"khủng bố trắng"</b> tàn bạo sau khởi nghĩa Yên Bái.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout" style="flex:none">
+      <span class="co-tag">Kết quả</span>
+      <span class="co-text">Mâu thuẫn giữa <b>toàn thể dân tộc Việt Nam</b> với <b>đế quốc Pháp và tay sai</b> trở nên gay gắt hơn bao giờ hết.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 4 — DÒNG THỜI GIAN ════════════════════ -->
+<section class="slide" data-part="Phần I · Mở đầu" data-title="Cao trào cách mạng 1930">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Phần I · Mở đầu</div>
+  <h2 class="s-title">Cao trào cách mạng &amp; sự ra đời <em>hai văn kiện</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="timeline" style="flex:1">
+      <div class="tl-line"></div>
+      <div class="tl-item">
+        <div class="tl-year">02/1930</div><div class="tl-dot"></div>
+        <div class="tl-text"><b>ĐCSVN ra đời</b>, thông qua Cương lĩnh (Nguyễn Ái Quốc khởi thảo)</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">01→04/1930</div><div class="tl-dot"></div>
+        <div class="tl-text">Bãi công &amp; biểu tình nông dân nổ ra <b>liên tiếp</b></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">05/1930</div><div class="tl-dot"></div>
+        <div class="tl-text">Cao trào 1/5: <b>16 bãi công, 34 biểu tình</b></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">09/1930</div><div class="tl-dot"></div>
+        <div class="tl-text">Đỉnh cao <b>Xô viết Nghệ Tĩnh</b></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">10/1930</div><div class="tl-dot"></div>
+        <div class="tl-text">Hội nghị TƯ I, đổi tên <b>ĐCS Đông Dương</b>, thông qua Luận cương</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">18/11/1930</div><div class="tl-dot"></div>
+        <div class="tl-text">Chỉ thị lập <b>"Hội Phản đế đồng minh"</b></div>
+      </div>
+    </div>
+    <div class="panel gold" style="flex:none">
+      <b>Năm 1930</b> là một năm dồn dập: <b>Đảng ra đời, phong trào bùng nổ, hai văn kiện chính trị nối tiếp nhau</b>, đặt nền móng cho <b>cách mạng Việt Nam hiện đại</b>.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 5 — DIVIDER PHẦN II ════════════════════ -->
+<section class="slide divider" data-part="Phần II · Cương lĩnh 02/1930" data-title="▸ Phần II · Cương lĩnh chính trị">
+  <div class="d-bg"><img src="images/naq-30-france.jpg" alt=""></div>
+  <div class="d-frame"></div>
+  <div class="d-grid">
+    <div class="d-num">II</div>
+    <div class="d-kicker">Văn kiện thứ nhất</div>
+    <h2 class="d-title">Cương lĩnh<br>chính trị <em>02/1930</em></h2>
+    <div class="d-rule"></div>
+    <p class="d-by">Hoàn cảnh ra đời · Nội dung · Ý nghĩa</p>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 6 — HOÀN CẢNH CƯƠNG LĨNH ════════════════════ -->
+<section class="slide" data-part="Phần II · Cương lĩnh 02/1930" data-title="Hoàn cảnh ra đời (Cương lĩnh)">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Cương lĩnh 02/1930 · Hoàn cảnh</div>
+  <h2 class="s-title">Hoàn cảnh lịch sử</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div class="numlist" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;align-content:start">
+        <div class="item"><div class="n">01</div><div class="t"><strong>Xã hội thuộc địa nửa phong kiến</strong>Tồn tại <b>hai mâu thuẫn cơ bản</b>: <b>dân tộc</b> và <b>giai cấp</b>.</div></div>
+        <div class="item"><div class="n">02</div><div class="t"><strong>Khủng hoảng đường lối</strong>Phong trào yêu nước <b>liên tục thất bại</b> vì <b>thiếu đường lối phù hợp</b>.</div></div>
+        <div class="item"><div class="n">03</div><div class="t"><strong>Tìm đường cứu nước</strong>Năm <b>1911</b>, <b>Nguyễn Ái Quốc</b> ra đi, tìm thấy con đường <b>cách mạng vô sản</b>.</div></div>
+        <div class="item"><div class="n">04</div><div class="t"><strong>Chuẩn bị tổ chức</strong>Năm <b>1925</b> lập <b>Hội Việt Nam Cách mạng Thanh niên</b> tại <b>Quảng Châu</b>.</div></div>
+        <div class="item"><div class="n">05</div><div class="t"><strong>Ba tổ chức phân liệt</strong>Năm <b>1929</b>, ba tổ chức cộng sản hoạt động <b>riêng rẽ</b>, <b>tranh giành ảnh hưởng</b>.</div></div>
+        <div class="item"><div class="n">06</div><div class="t"><strong>Hội nghị hợp nhất</strong><b>6/1 → 7/2/1930</b> tại <b>Hương Cảng</b>, hợp nhất thành <b>Đảng Cộng sản Việt Nam</b>.</div></div>
+      </div>
+      <div class="vignette">
+        <img src="images/nha-rong.jpg" alt="Bến Nhà Rồng">
+        <div class="v-cap"><b>Bến Nhà Rồng · Sài Gòn</b> <em>· 5/6/1911, nơi Nguyễn Tất Thành ra đi tìm đường cứu nước</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 7 — NỘI DUNG CƯƠNG LĨNH ════════════════════ -->
+<section class="slide" data-part="Phần II · Cương lĩnh 02/1930" data-title="Nội dung Cương lĩnh 02/1930">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Cương lĩnh 02/1930 · Nội dung</div>
+  <h2 class="s-title">Năm trụ cột nội dung</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-l" style="flex:1">
+      <div class="vignette fade-l">
+        <img src="images/naq-30-france.jpg" alt="Nguyễn Ái Quốc tại Pháp">
+        <div class="v-cap"><b>Đồng chí Nguyễn Ái Quốc</b> <em>· tại Pháp, đầu thập niên 1920 · người khởi thảo Cương lĩnh</em></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;min-height:0;overflow:hidden">
+        <div class="row gold">
+          <div class="r-label"><div class="r-num">1</div><div class="r-name">Đường lối<br>chiến lược</div></div>
+          <div class="r-body">"Làm <b>tư sản dân quyền cách mạng</b> và <b>thổ địa cách mạng</b> để đi tới xã hội cộng sản."</div>
+        </div>
+        <div class="row gold">
+          <div class="r-label"><div class="r-num">2</div><div class="r-name">Nhiệm vụ<br>cách mạng</div></div>
+          <div class="r-body">Đánh đổ đế quốc Pháp &amp; phong kiến; lập chính phủ công nông binh; chia ruộng đất; ngày làm 8 giờ.</div>
+        </div>
+        <div class="row gold">
+          <div class="r-label"><div class="r-num">3</div><div class="r-name">Lực lượng<br>cách mạng</div></div>
+          <div class="r-body">Công nông là nòng cốt; liên minh tiểu tư sản, trí thức; lợi dụng phú nông, trung tiểu địa chủ.</div>
+        </div>
+        <div class="row gold">
+          <div class="r-label"><div class="r-num">4</div><div class="r-name">Lãnh đạo<br>cách mạng</div></div>
+          <div class="r-body">Đảng Cộng sản Việt Nam, đội tiên phong của giai cấp công nhân, lấy <b>Mác Lênin</b> làm nền tảng.</div>
+        </div>
+        <div class="row gold">
+          <div class="r-label"><div class="r-num">5</div><div class="r-name">Đoàn kết<br>quốc tế</div></div>
+          <div class="r-body">Cách mạng Việt Nam là <b>một bộ phận khăng khít</b> của cách mạng vô sản thế giới.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 8 — Ý NGHĨA CƯƠNG LĨNH ════════════════════ -->
+<section class="slide" data-part="Phần II · Cương lĩnh 02/1930" data-title="Ý nghĩa Cương lĩnh">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Cương lĩnh 02/1930 · Ý nghĩa</div>
+  <h2 class="s-title">Ý nghĩa <em>lịch sử</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+        <div class="cols three" style="flex:none">
+          <div class="block gold"><div class="b-head">Lý luận</div>
+            <ul><li>Vận dụng <b>đúng đắn, sáng tạo</b> chủ nghĩa <b>Mác Lênin</b> vào một nước <b>thuộc địa nửa phong kiến</b>.</li></ul></div>
+          <div class="block gold"><div class="b-head">Đường lối</div>
+            <ul><li>Kết hợp đúng đắn vấn đề <b>dân tộc &amp; giai cấp</b>, lấy <b>độc lập tự do</b> làm cốt lõi.</li></ul></div>
+          <div class="block gold"><div class="b-head">Bước ngoặt</div>
+            <ul><li>Chấm dứt thời kỳ <b>khủng hoảng đường lối</b> và <b>giai cấp lãnh đạo</b>.</li></ul></div>
+        </div>
+        <div class="quote">
+          <p>"Việc thành lập Đảng là một bước ngoặt vô cùng quan trọng trong lịch sử cách mạng Việt Nam ta."</p>
+          <cite>Chủ tịch Hồ Chí Minh</cite>
+        </div>
+      </div>
+      <div class="vignette">
+        <img src="images/hcm-1930-prison.png" alt="Hồ Chí Minh năm 1930">
+        <div class="v-cap"><b>Hồ Chí Minh (Tống Văn Sơ)</b> <em>· ảnh tại Nhà tù Victoria, Hồng Kông · năm 1930</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 9 — DIVIDER PHẦN III ════════════════════ -->
+<section class="slide divider" data-part="Phần III · Luận cương 10/1930" data-title="▸ Phần III · Luận cương chính trị">
+  <div class="d-bg"><img src="images/tran-phu-tbt.jpg" alt=""></div>
+  <div class="d-frame"></div>
+  <div class="d-grid">
+    <div class="d-num">III</div>
+    <div class="d-kicker">Văn kiện thứ hai</div>
+    <h2 class="d-title">Luận cương<br>chính trị <em>10/1930</em></h2>
+    <div class="d-rule"></div>
+    <p class="d-by">Hoàn cảnh · Nội dung · Hạn chế</p>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 10 — HOÀN CẢNH LUẬN CƯƠNG ════════════════════ -->
+<section class="slide" data-part="Phần III · Luận cương 10/1930" data-title="Hoàn cảnh ra đời (Luận cương)">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Luận cương 10/1930 · Hoàn cảnh</div>
+  <h2 class="s-title">Hoàn cảnh ra đời</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div class="panel accent"><b>Phong trào dâng cao.</b> Sau 02/1930, phong trào <b>công nông phát triển mạnh</b>, đỉnh cao là <b>Xô viết Nghệ Tĩnh</b>.</div>
+        <div class="panel accent"><b>Đời sống cùng cực.</b> Khủng hoảng kinh tế <b>1929 → 1933</b> đẩy <b>mâu thuẫn dân tộc</b> thêm gay gắt.</div>
+        <div class="panel gold"><b>Yêu cầu thống nhất.</b> Đảng còn non trẻ, cần <b>văn kiện chính trị hệ thống</b> để định hướng đường lối.</div>
+        <div class="panel gold"><b>Tác động quốc tế.</b> <b>Quốc tế Cộng sản</b> yêu cầu các đảng thuộc địa xây dựng <b>đường lối cách mạng vô sản</b>.</div>
+        <div class="callout">
+          <span class="co-tag">Sự kiện</span>
+          <span class="co-text"><b>14 → 31/10/1930</b>, Hội nghị TƯ I tại Hương Cảng, <b>Trần Phú</b> được bầu Tổng Bí thư.</span>
+        </div>
+      </div>
+      <div class="vignette">
+        <img src="images/tran-phu-tbt.jpg" alt="Đồng chí Trần Phú">
+        <div class="v-cap"><b>Đồng chí Trần Phú (1904 → 1931)</b> <em>· Tổng Bí thư đầu tiên của Đảng · chủ trì soạn thảo Luận cương</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 11 — NỘI DUNG LUẬN CƯƠNG ════════════════════ -->
+<section class="slide" data-part="Phần III · Luận cương 10/1930" data-title="Nội dung Luận cương 10/1930">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Luận cương 10/1930 · Nội dung</div>
+  <h2 class="s-title">Nội dung cơ bản</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-l" style="flex:1">
+      <div class="vignette fade-l">
+        <img src="images/hanoi-bxp-1946.jpg" alt="Hà Nội 1946 - tranh Bùi Xuân Phái">
+        <div class="v-cap"><b>"Hà Nội · 1946"</b> <em>· tranh sơn dầu của họa sĩ Bùi Xuân Phái</em></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;min-height:0;overflow:hidden">
+        <div class="row red">
+          <div class="r-label"><div class="r-num">1</div><div class="r-name">Đường lối<br>chiến lược</div></div>
+          <div class="r-body">Cách mạng Đông Dương qua <b>hai giai đoạn</b>: tư sản dân quyền tiến tới XHCN, <b>bỏ qua TBCN</b>.</div>
+        </div>
+        <div class="row red">
+          <div class="r-label"><div class="r-num">2</div><div class="r-name">Nhiệm vụ<br>cách mạng</div></div>
+          <div class="r-body">Đánh đổ đế quốc Pháp &amp; phong kiến; thực hiện <b>thổ địa cách mạng triệt để</b>; lập chính quyền công nông.</div>
+        </div>
+        <div class="row red">
+          <div class="r-label"><div class="r-num">3</div><div class="r-name">Lực lượng &amp;<br>lãnh đạo</div></div>
+          <div class="r-body">Giai cấp công nhân lãnh đạo qua Đảng; động lực chính là <b>công nhân &amp; nông dân</b>.</div>
+        </div>
+        <div class="row red">
+          <div class="r-label"><div class="r-num">4</div><div class="r-name">Phương pháp<br>cách mạng</div></div>
+          <div class="r-body">Chuẩn bị <b>"võ trang bạo động"</b>; khi có thời cơ giành chính quyền bằng bạo lực.</div>
+        </div>
+        <div class="row red">
+          <div class="r-label"><div class="r-num">5</div><div class="r-name">Quan hệ<br>quốc tế</div></div>
+          <div class="r-body">Một bộ phận của cách mạng vô sản thế giới; đoàn kết với vô sản quốc tế, đặc biệt là <b>vô sản Pháp</b>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 12 — HẠN CHẾ LUẬN CƯƠNG ════════════════════ -->
+<section class="slide" data-part="Phần III · Luận cương 10/1930" data-title="Hạn chế & sự bổ sung">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Luận cương 10/1930 · Hạn chế</div>
+  <h2 class="s-title">Hạn chế &amp; sự bổ sung</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols" style="grid-template-columns:1fr 1fr 280px;flex:1">
+      <div class="block red">
+        <div class="b-head">Những hạn chế</div>
+        <ul>
+          <li>Chưa xác định đúng <b>mâu thuẫn chủ yếu</b> của xã hội thuộc địa.</li>
+          <li>Nặng về <b>đấu tranh giai cấp</b> và cách mạng ruộng đất.</li>
+          <li>Chưa đặt nhiệm vụ <b>giải phóng dân tộc</b> lên hàng đầu.</li>
+          <li>Chưa xây dựng được mặt trận đoàn kết dân tộc rộng rãi.</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="block">
+          <div class="b-head">Nguyên nhân</div>
+          <ul>
+            <li>Chịu ảnh hưởng tư tưởng <b>"tả khuynh"</b> của Quốc tế Cộng sản.</li>
+            <li>Nhận thức chưa đầy đủ về thực tiễn cách mạng thuộc địa Việt Nam.</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="co-tag">Bổ sung</span>
+          <span class="co-text"><b>18/11/1930</b> · Chỉ thị lập "Hội Phản đế đồng minh".</span>
+        </div>
+      </div>
+      <div class="vignette">
+        <img src="images/yen-bai-1930.png" alt="Chân dung 13 chí sĩ Yên Bái">
+        <div class="v-cap"><b>Chân dung 13 chí sĩ Yên Bái</b> <em>· bị thực dân Pháp xử tử ngày 17/6/1930 sau khởi nghĩa Yên Bái</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 13 — DIVIDER PHẦN IV ════════════════════ -->
+<section class="slide divider" data-part="Phần IV · So sánh" data-title="▸ Phần IV · So sánh hai văn kiện">
+  <div class="d-bg"><img src="images/hcm-1930-prison.png" alt=""></div>
+  <div class="d-frame"></div>
+  <div class="d-grid">
+    <div class="d-num">IV</div>
+    <div class="d-kicker">Trọng tâm bài thuyết trình</div>
+    <h2 class="d-title">So sánh<br><em>hai văn kiện</em></h2>
+    <div class="d-rule"></div>
+    <p class="d-by">Giống nhau · Khác nhau · Nguyên nhân</p>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 14 — TỔNG QUAN ĐIỂM GIỐNG ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Điểm giống nhau · Tổng quan">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Điểm giống nhau</div>
+  <h2 class="s-title">Năm điểm <em>tương đồng</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:11px;min-height:0">
+        <div class="panel gold" style="font-size:16.5px">
+          Tại <b>Hội nghị thành lập Đảng</b> (<b>3 → 7/2/1930</b>) ở <b>Hương Cảng</b>, các đại biểu đã thông qua <b>Chánh cương, Sách lược &amp; Chương trình vắn tắt</b> do <b>Nguyễn Ái Quốc</b> soạn thảo. Tháng <b>10/1930</b>, Hội nghị TƯ I thông qua <b>Luận cương chính trị</b> do đồng chí <b>Trần Phú</b> soạn thảo.
+        </div>
+        <div class="numlist" style="flex:1">
+          <div class="item"><div class="n">01</div><div class="t"><strong>Cùng nền tảng lý luận</strong>Đều xây dựng trên <b>chủ nghĩa Mác Lênin</b> và lập trường <b>cách mạng vô sản</b>.</div></div>
+          <div class="item"><div class="n">02</div><div class="t"><strong>Phương hướng chiến lược</strong>Cùng xác định cách mạng Việt Nam thuộc phạm trù <b>cách mạng vô sản</b>.</div></div>
+          <div class="item"><div class="n">03</div><div class="t"><strong>Nhiệm vụ cách mạng</strong>Đánh đổ <b>đế quốc</b> và <b>phong kiến</b> trên cả ba phương diện chính trị, kinh tế, xã hội.</div></div>
+          <div class="item"><div class="n">04</div><div class="t"><strong>Phương pháp cách mạng</strong>Dùng <b>sức mạnh bạo lực cách mạng</b> của quần chúng, bác bỏ <b>cải lương</b>.</div></div>
+          <div class="item"><div class="n">05</div><div class="t"><strong>Vị trí quốc tế &amp; lãnh đạo</strong>Đoàn kết với <b>vô sản thế giới</b>; <b>Đảng Cộng sản</b> là lực lượng lãnh đạo.</div></div>
+        </div>
+      </div>
+      <div class="vignette">
+        <img src="images/giong-mo-dau.png" alt="Hội nghị thành lập Đảng">
+        <div class="v-cap"><b>Hội nghị thành lập Đảng</b> <em>· 3 → 7/2/1930 tại Hương Cảng (Hồng Kông)</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 14b — NỀN TẢNG & PHƯƠNG HƯỚNG ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Giống nhau · Lý luận & Chiến lược">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Giống nhau (1)</div>
+  <h2 class="s-title">Nền tảng lý luận &amp; <em>Phương hướng chiến lược</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols two" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:11px;min-height:0">
+        <div class="block gold" style="flex:none">
+          <div class="b-head"><span class="bnum">1</span>Nền tảng lý luận chung</div>
+          <ul>
+            <li>Cùng dựa trên <b>chủ nghĩa Mác Lênin</b> và lập trường <b>cách mạng vô sản</b>.</li>
+            <li>Vận dụng <b>sáng tạo</b> chủ nghĩa Mác Lênin vào thực tiễn Việt Nam.</li>
+            <li>Giải quyết đúng đắn mối quan hệ <b>dân tộc &amp; giai cấp</b>.</li>
+            <li>Kết hợp <b>chủ nghĩa yêu nước</b> với <b>chủ nghĩa quốc tế vô sản</b>.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:140px">
+          <img src="images/giong-marx-lenin.png" alt="Mác · Lênin">
+          <div class="v-cap" style="font-size:12.5px;padding:8px 14px"><b>Chủ nghĩa Mác Lênin</b> <em>· nền tảng tư tưởng của Đảng</em></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;min-height:0">
+        <div class="block red" style="flex:none">
+          <div class="b-head"><span class="bnum red">2</span>Phương hướng chiến lược</div>
+          <ul>
+            <li>Đều xác định cách mạng Việt Nam thuộc <b>phạm trù cách mạng vô sản</b>.</li>
+            <li>Đường lối: <b>"Tư sản dân quyền cách mạng và thổ địa cách mạng"</b>.</li>
+            <li>Là sự <b>vận dụng sáng tạo</b> chủ nghĩa Mác Lênin vào thực tiễn Đông Dương.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:140px">
+          <img src="images/giong-phuonghuong.png" alt="Nông dân Việt Nam">
+          <div class="v-cap" style="font-size:12.5px;padding:8px 14px"><b>Nông dân Việt Nam</b> <em>· lực lượng cách mạng chủ yếu của thổ địa cách mạng</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 14c — NHIỆM VỤ CÁCH MẠNG ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Giống nhau · Nhiệm vụ cách mạng">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Giống nhau (2)</div>
+  <h2 class="s-title"><span class="bnum">3</span>Nhiệm vụ cách mạng <em>&nbsp;·&nbsp; Chính trị · Kinh tế · Xã hội</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols three" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div class="block red" style="flex:none">
+          <div class="b-head">Về chính trị</div>
+          <ul>
+            <li>Đánh đổ <b>đế quốc Pháp</b> và <b>phong kiến</b>.</li>
+            <li>Giành <b>độc lập hoàn toàn</b> cho dân tộc.</li>
+            <li>Thành lập <b>chính quyền công nông binh</b>.</li>
+            <li>Xây dựng <b>lực lượng vũ trang cách mạng</b>.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:120px">
+          <img src="images/giong-chinhtri.png" alt="Phong trào cách mạng">
+          <div class="v-cap" style="font-size:12px;padding:7px 12px"><b>Phong trào cách mạng quần chúng</b> <em>· hướng tới chính quyền công nông</em></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div class="block gold" style="flex:none">
+          <div class="b-head">Về kinh tế</div>
+          <ul>
+            <li>Tịch thu <b>cơ sở kinh tế của đế quốc</b>, xóa bỏ quốc trái.</li>
+            <li>Thực hiện <b>"người cày có ruộng"</b>, giảm sưu thuế.</li>
+            <li>Phát triển <b>công nông nghiệp</b>, ngày làm <b>8 giờ</b>.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:120px">
+          <img src="images/giong-kinhte.png" alt="Thuế và kinh tế">
+          <div class="v-cap" style="font-size:12px;padding:7px 12px"><b>Xóa bỏ sưu thuế · tịch thu cơ sở đế quốc</b></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div class="block" style="flex:none">
+          <div class="b-head">Về xã hội</div>
+          <ul>
+            <li>Quyền <b>tự do tổ chức</b> cho quần chúng.</li>
+            <li><b>Nam nữ bình quyền</b>, phổ thông giáo dục.</li>
+            <li><b>Công nông hóa</b> đời sống xã hội.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:120px">
+          <img src="images/giong-xahoi.png" alt="Phong trào phụ nữ">
+          <div class="v-cap" style="font-size:12px;padding:7px 12px"><b>Phong trào phụ nữ</b> <em>· nam nữ bình quyền</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 14d — PHƯƠNG PHÁP & QUỐC TẾ ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Giống nhau · Phương pháp & Quốc tế">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Giống nhau (3)</div>
+  <h2 class="s-title">Phương pháp cách mạng &amp; <em>Quan hệ quốc tế</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols two" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:11px;min-height:0">
+        <div class="block red" style="flex:none">
+          <div class="b-head"><span class="bnum">4</span>Phương pháp cách mạng</div>
+          <ul>
+            <li>Sử dụng <b>sức mạnh quần chúng</b> để đánh đổ đế quốc và phong kiến.</li>
+            <li>Giành chính quyền về tay <b>công nông</b> bằng con đường cách mạng.</li>
+            <li>Khẳng định vai trò của <b>bạo lực cách mạng</b>, bác bỏ <b>cải lương và thỏa hiệp</b>.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:160px">
+          <img src="images/giong-phuongphap.png" alt="Phương pháp cách mạng">
+          <div class="v-cap"><b>Sức mạnh bạo lực cách mạng của quần chúng</b> <em>· con đường giành chính quyền</em></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;min-height:0">
+        <div class="block gold" style="flex:none">
+          <div class="b-head"><span class="bnum red">5</span>Vị trí quốc tế &amp; vai trò lãnh đạo</div>
+          <ul>
+            <li>Đoàn kết với <b>các dân tộc bị áp bức</b> và <b>giai cấp vô sản thế giới</b>.</li>
+            <li>Kết hợp <b>chủ nghĩa yêu nước</b> với <b>chủ nghĩa quốc tế vô sản</b>.</li>
+            <li>Khẳng định <b>Đảng Cộng sản</b> là lực lượng lãnh đạo cách mạng.</li>
+            <li>Thể hiện <b>vai trò tiên phong</b> của giai cấp công nhân.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1;min-height:160px">
+          <img src="images/giong-lanhdao.png" alt="Hội nghị quốc tế của Đảng">
+          <div class="v-cap"><b>Đoàn kết quốc tế</b> <em>· các đảng cộng sản đoàn kết trong phong trào vô sản thế giới</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 15 — ĐIỂM KHÁC NHAU (BẢNG) ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Điểm khác nhau (bảng)">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Điểm khác nhau</div>
+  <h2 class="s-title">Bảng so sánh <em>sáu tiêu chí</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="ctable">
+      <div class="ct-head">
+        <div class="h0">Tiêu chí</div>
+        <div class="h1">Cương lĩnh 02/1930</div>
+        <div class="h2">Luận cương 10/1930</div>
+      </div>
+      <div class="ct-row">
+        <div class="c0">Tính chất cách mạng</div>
+        <div class="c1">Tư sản dân quyền &amp; thổ địa cách mạng để đi tới xã hội cộng sản</div>
+        <div class="c2">Tư sản dân quyền có tính chất thổ địa &amp; phản đế, tiến lên CNXH</div>
+      </div>
+      <div class="ct-row">
+        <div class="c0">Nhiệm vụ chủ yếu</div>
+        <div class="c1">Đặt <b>giải phóng dân tộc</b> lên hàng đầu, chống đế quốc &amp; phong kiến</div>
+        <div class="c2">Nhấn mạnh <b>đấu tranh giai cấp</b> và cách mạng ruộng đất</div>
+      </div>
+      <div class="ct-row">
+        <div class="c0">Lực lượng cách mạng</div>
+        <div class="c1">Tập hợp <b>rộng rãi</b>: công nông, tiểu tư sản, trí thức, tư sản dân tộc</div>
+        <div class="c2">Chủ yếu dựa vào <b>công nhân và nông dân</b></div>
+      </div>
+      <div class="ct-row">
+        <div class="c0">Tập hợp lực lượng</div>
+        <div class="c1">Đề cao <b>đại đoàn kết dân tộc</b>, mặt trận thống nhất chống đế quốc</div>
+        <div class="c2">Chủ yếu nhấn mạnh <b>liên minh công nông</b></div>
+      </div>
+      <div class="ct-row">
+        <div class="c0">Dân tộc &amp; giai cấp</div>
+        <div class="c1"><b>Ưu tiên vấn đề dân tộc</b>, giải phóng dân tộc là cấp bách nhất</div>
+        <div class="c2">Đề cao đấu tranh giai cấp, chưa đặt dân tộc trung tâm</div>
+      </div>
+      <div class="ct-row">
+        <div class="c0">Quan hệ quốc tế</div>
+        <div class="c1">Gắn với phong trào giải phóng dân tộc &amp; cách mạng thế giới</div>
+        <div class="c2">Nhấn mạnh cách mạng vô sản thế giới &amp; Quốc tế Cộng sản</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 16 — NGUYÊN NHÂN KHÁC BIỆT ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Nguyên nhân khác biệt">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Nguyên nhân</div>
+  <h2 class="s-title">Nguyên nhân của sự <em>khác biệt</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols two" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:none;align-items:start">
+          <div class="polaroid tilt-l" style="padding:8px 8px 32px 8px">
+            <img src="images/naq-30-france.jpg" alt="Nguyễn Ái Quốc" style="aspect-ratio:3/4;width:100%;object-fit:cover;object-position:center 30%">
+            <div class="p-text" style="font-size:13px;bottom:8px">Nguyễn Ái Quốc</div>
+          </div>
+          <div class="polaroid tilt-r" style="padding:8px 8px 32px 8px">
+            <img src="images/tran-phu-tbt.jpg" alt="Trần Phú" style="aspect-ratio:3/4;width:100%;object-fit:cover;object-position:center 25%">
+            <div class="p-text" style="font-size:13px;bottom:8px">Trần Phú</div>
+          </div>
+        </div>
+        <div class="block gold">
+          <div class="b-head">Chủ quan · Người soạn thảo</div>
+          <ul>
+            <li><b>Nguyễn Ái Quốc</b> trực tiếp khảo sát phong trào nhiều thuộc địa, tư duy thực tiễn, ưu tiên dân tộc.</li>
+            <li><b>Trần Phú</b> đào tạo bài bản tại ĐH Phương Đông, chịu ảnh hưởng quan điểm vô sản quốc tế.</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+        <div class="block red">
+          <div class="b-head">Khách quan · Quốc tế Cộng sản</div>
+          <ul>
+            <li>Phong trào cộng sản quốc tế chịu ảnh hưởng khuynh hướng <b>"tả khuynh"</b>.</li>
+            <li>Cách mạng Việt Nam bị nhìn theo <b>khuôn mẫu chung</b>, chưa phản ánh đầy đủ thực tế.</li>
+          </ul>
+        </div>
+        <div class="vignette" style="flex:1">
+          <img src="images/comintern.png" alt="Quốc tế Cộng sản" style="background:#5b110b;padding:24px;object-fit:contain">
+        </div>
+        <div class="callout">
+          <span class="co-tag">Thêm</span>
+          <span class="co-text">Đảng vừa thành lập, trình độ lý luận và kinh nghiệm còn hạn chế.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 17 — ĐIỂM TIẾN BỘ LÝ LUẬN ════════════════════ -->
+<section class="slide" data-part="Phần IV · So sánh" data-title="Điểm tiến bộ lý luận">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">So sánh · Điểm phát triển</div>
+  <h2 class="s-title">Điểm phát triển lý luận của <em>Luận cương</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+        <div class="quote" style="flex:none">
+          <p>"Bỏ qua thời kỳ tư bản mà tranh đấu thẳng lên con đường xã hội chủ nghĩa."</p>
+          <cite>Điểm mới mà Chính cương &amp; Sách lược vắn tắt chưa đề cập đầy đủ</cite>
+        </div>
+        <div class="cols three" style="flex:1">
+          <div class="block red"><div class="b-head">Chính trị</div>
+            <ul><li>Sự <b>lãnh đạo của giai cấp vô sản</b>, <b>liên minh công nông</b> và <b>chính quyền công nông</b>.</li></ul></div>
+          <div class="block red"><div class="b-head">Kinh tế</div>
+            <ul><li><b>Phát triển công nghiệp</b>, tịch thu cơ sở kinh tế lớn của <b>tư bản nước ngoài</b>.</li></ul></div>
+          <div class="block red"><div class="b-head">Xã hội</div>
+            <ul><li><b>Giải phóng con người</b>, <b>ngày làm 8 giờ</b>, <b>nam nữ bình quyền</b>, <b>dân tộc tự quyết</b>.</li></ul></div>
+        </div>
+        <div class="callout" style="flex:none">
+          <span class="co-tag">Hiện thực hóa</span>
+          <span class="co-text">Sau 1954 miền Bắc tiến lên CNXH · Đại hội IX (2001): <b>"bỏ qua chế độ tư bản chủ nghĩa"</b>.</span>
+        </div>
+      </div>
+      <div class="vignette">
+        <img src="images/giong-marx2.png" alt="Lý luận Mác Lênin">
+        <div class="v-cap"><b>Lý luận cách mạng vô sản</b> <em>· nền tảng cho con đường bỏ qua TBCN, tiến thẳng lên CNXH</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 18 — GIÁ TRỊ LỊCH SỬ ════════════════════ -->
+<section class="slide" data-part="Phần V · Giá trị & Liên hệ" data-title="Giá trị lịch sử">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Phần V · Giá trị lịch sử &amp; liên hệ thực tế</div>
+  <h2 class="s-title">Giá trị <em>lịch sử</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols" style="grid-template-columns:1fr 1fr 280px;flex:1">
+      <div class="block gold">
+        <div class="b-head">Cương lĩnh 02/1930</div>
+        <ul>
+          <li>Xác định <b>đúng con đường</b> cách mạng Việt Nam.</li>
+          <li>Giải quyết đúng đắn quan hệ <b>dân tộc &amp; giai cấp</b>.</li>
+          <li>Xác định đúng lực lượng &amp; vai trò lãnh đạo của Đảng.</li>
+          <li>Đặt nền móng cho thắng lợi Cách mạng Tháng Tám.</li>
+        </ul>
+      </div>
+      <div class="block red">
+        <div class="b-head">Luận cương 10/1930</div>
+        <ul>
+          <li>Khẳng định con đường tiến lên CNXH, <b>bỏ qua TBCN</b>.</li>
+          <li>Xác định hai nhiệm vụ chiến lược: chống đế quốc &amp; chống phong kiến.</li>
+          <li>Phát triển lý luận về <b>phương pháp cách mạng</b>.</li>
+          <li>Củng cố phong trào cách mạng 1930 → 1931.</li>
+        </ul>
+      </div>
+      <div class="vignette">
+        <img src="images/cpv-flag.png" alt="Đảng kỳ ĐCSVN" style="background:#7a1610;padding:24px;object-fit:contain;filter:none">
+        <div class="v-cap"><b>Đảng kỳ Đảng Cộng sản Việt Nam</b> <em>· biểu tượng tiếp nối giá trị 1930</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 19 — LIÊN HỆ THỰC TẾ ════════════════════ -->
+<section class="slide" data-part="Phần V · Giá trị & Liên hệ" data-title="Liên hệ thực tế hiện nay">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="kicker">Phần V · Giá trị lịch sử &amp; liên hệ thực tế</div>
+  <h2 class="s-title">Liên hệ thực tế <em>hiện nay</em></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols aside-r" style="flex:1">
+      <div class="numlist" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;align-content:start">
+        <div class="item"><div class="n">01</div><div class="t"><strong>Kiên định mục tiêu</strong><b>Độc lập dân tộc</b> gắn liền với <b>CNXH</b>, sợi chỉ đỏ xuyên suốt.</div></div>
+        <div class="item"><div class="n">02</div><div class="t"><strong>Xây dựng Đảng</strong>Giữ <b>vai trò lãnh đạo</b>; chống <b>suy thoái</b>, <b>"tự diễn biến"</b>.</div></div>
+        <div class="item"><div class="n">03</div><div class="t"><strong>Đại đoàn kết</strong>Huy động <b>mọi nguồn lực</b>, tăng cường <b>đồng thuận xã hội</b>.</div></div>
+        <div class="item"><div class="n">04</div><div class="t"><strong>Đối ngoại</strong><b>Đa phương hóa</b>, hội nhập quốc tế, <b>"ngoại giao cây tre"</b>.</div></div>
+        <div class="item" style="grid-column:1 / -1"><div class="n">05</div><div class="t"><strong>Phát triển vì con người</strong>Kinh tế thị trường định hướng XHCN; hướng tới <b>"Dân giàu, nước mạnh, dân chủ, công bằng, văn minh"</b>.</div></div>
+      </div>
+      <div class="vignette">
+        <img src="images/hcm-statue.jpg" alt="Tư tưởng Hồ Chí Minh">
+        <div class="v-cap"><b>Tư tưởng Hồ Chí Minh</b> <em>· soi sáng con đường cách mạng Việt Nam hôm nay</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 20 — TỔNG KẾT ════════════════════ -->
+<section class="slide finale" data-part="Tổng kết" data-title="Tổng kết">
+  <svg class="corner tl"><use href="#orna-corner"/></svg>
+  <svg class="corner br"><use href="#orna-corner"/></svg>
+  <div class="f-grid">
+    <div>
+      <div class="kicker">Tổng kết</div>
+      <h2 class="s-title">Hai văn kiện <em>·</em> một mục tiêu chung</h2>
+      <div class="rule"></div>
+      <div class="body" style="margin-top:18px">
+        <div class="panel"><b>Cương lĩnh (02/1930)</b> và <b>Luận cương (10/1930)</b> là <b>nền móng đầu tiên</b> cho hệ thống lý luận cách mạng của <b>Đảng Cộng sản Việt Nam</b>.</div>
+        <div class="panel gold">Dù có khác biệt do nhận thức và điều kiện lịch sử, cả hai đều hướng tới mục tiêu chung: <b>giải phóng dân tộc, giành độc lập tự do</b> và đưa đất nước tiến lên <b>CNXH</b>.</div>
+        <div class="callout">
+          <span class="co-tag">Giá trị</span>
+          <span class="co-text">Đến nay vẫn là <b>ngọn cờ tư tưởng</b> được Đảng kế thừa, vận dụng và sáng tạo.</span>
+        </div>
+      </div>
+    </div>
+    <div class="f-portrait">
+      <img src="images/uncle-ho.jpg" alt="Bác Hồ kính yêu">
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SLIDE 21 — CẢM ƠN ════════════════════ -->
+<section class="slide thanks" data-part="Tổng kết" data-title="Cảm ơn">
+  <div class="t-bg"><img src="images/hcm-1946.jpg" alt=""></div>
+  <div class="t-inner">
+    <svg class="t-orna"><use href="#orna-flourish"/></svg>
+    <h2 class="t-big">Cảm ơn <em>cô và các bạn</em></h2>
+    <p class="t-sub">Nhóm rất mong nhận được câu hỏi và góp ý &nbsp;·&nbsp; Lớp <b>CLC-QTL49A</b></p>
+    <svg class="t-orna" style="margin-top:18px"><use href="#orna-flourish"/></svg>
+  </div>
+</section>
+
+</div><!-- /#stage -->
+</div><!-- /#deck -->
+
+<!-- ── NAV ── -->
+<div id="chrome">
+  <div class="seg">
+    <span id="partlabel"></span>
+  </div>
+  <div class="seg">
+    <span class="hint">← → chuyển slide&nbsp;·&nbsp;M menu&nbsp;·&nbsp;? trợ giúp</span>
+    <button class="navbtn" id="btnMenu" title="Menu (M)">☰</button>
+    <button class="navbtn" id="btnPrev" title="Slide trước (←)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter">1 / 24</span>
+    <button class="navbtn" id="btnNext" title="Slide sau (→)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="navbtn" id="btnFull" title="Toàn màn hình (F)">⛶</button>
+  </div>
+</div>
+
+<div id="menu">
+  <h3>Mục lục slide</h3>
+  <div class="m-sub">Nhấn vào một mục để chuyển tới slide đó · phím Esc để đóng</div>
+  <div class="m-grid" id="menuGrid"></div>
+</div>
+
+<div id="help">
+  <div class="h-card">
+    <h3>Phím tắt điều khiển</h3>
+    <div class="kb"><span>Slide sau</span><span><kbd>→</kbd> <kbd>Space</kbd></span></div>
+    <div class="kb"><span>Slide trước</span><span><kbd>←</kbd></span></div>
+    <div class="kb"><span>Slide đầu / cuối</span><span><kbd>Home</kbd> <kbd>End</kbd></span></div>
+    <div class="kb"><span>Mở mục lục</span><span><kbd>M</kbd></span></div>
+    <div class="kb"><span>Toàn màn hình</span><span><kbd>F</kbd></span></div>
+    <div class="kb"><span>Xuất PDF để nộp</span><span><kbd>Ctrl/Cmd</kbd> <kbd>P</kbd></span></div>
+    <button class="close" id="helpClose">Đã hiểu</button>
+  </div>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const counter=document.getElementById('counter');
+const partlabel=document.getElementById('partlabel');
+const progress=document.getElementById('progress');
+const menu=document.getElementById('menu');
+const help=document.getElementById('help');
+let cur=0;
+
+function render(){
+  slides.forEach((s,i)=>s.classList.toggle('active',i===cur));
+  counter.textContent=(cur+1)+' / '+slides.length;
+  partlabel.textContent=slides[cur].dataset.part||'';
+  progress.style.width=((cur+1)/slides.length*100)+'%';
+  [...menu.querySelectorAll('.m-item')].forEach((el,i)=>el.classList.toggle('cur',i===cur));
+}
+function go(i){cur=Math.max(0,Math.min(slides.length-1,i));render();}
+function next(){go(cur+1);} function prev(){go(cur-1);}
+
+document.getElementById('btnNext').onclick=next;
+document.getElementById('btnPrev').onclick=prev;
+document.getElementById('btnMenu').onclick=()=>menu.classList.toggle('open');
+document.getElementById('btnFull').onclick=toggleFull;
+document.getElementById('helpClose').onclick=()=>help.classList.remove('open');
+
+function toggleFull(){
+  if(!document.fullscreenElement)document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();
+  else document.exitFullscreen&&document.exitFullscreen();
+}
+
+document.addEventListener('keydown',e=>{
+  const k=e.key;
+  if(k==='Escape'){menu.classList.remove('open');help.classList.remove('open');return;}
+  if(k==='ArrowRight'||k===' '||k==='PageDown'){e.preventDefault();next();}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();prev();}
+  else if(k==='Home'){go(0);}
+  else if(k==='End'){go(slides.length-1);}
+  else if(k==='m'||k==='M'){menu.classList.toggle('open');}
+  else if(k==='f'||k==='F'){toggleFull();}
+  else if(k==='?'||k==='/'){help.classList.toggle('open');}
+});
+
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{
+  const d=e.changedTouches[0].clientX-tx;
+  if(Math.abs(d)>55){d<0?next():prev();}
+},{passive:true});
+
+const mg=document.getElementById('menuGrid');
+slides.forEach((s,i)=>{
+  const d=document.createElement('div');
+  d.className='m-item';
+  d.innerHTML='<span class="mi-n">'+(i+1)+'</span><span class="mi-t">'+(s.dataset.title||'Slide')+'</span>';
+  d.onclick=()=>{go(i);menu.classList.remove('open');};
+  mg.appendChild(d);
+});
+
+function fit(){
+  const s=Math.min(window.innerWidth/1280,(window.innerHeight-46)/720);
+  document.documentElement.style.setProperty('--scale',s);
+}
+window.addEventListener('resize',fit);
+fit();render();
+</script>
+</body>
+</html>
