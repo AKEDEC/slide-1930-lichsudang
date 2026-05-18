@@ -178,12 +178,19 @@ body{
 .numlist .item{transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease,
     border-color .3s ease, background .3s ease, opacity .3s ease, filter .3s ease}
 .numlist .n{
-  font-family:var(--font-display);font-weight:800;font-size:30px;
-  color:var(--brown-dark);text-align:center;line-height:1.1;
-  border-bottom:2px solid var(--gold);padding-bottom:2px;
-  transition:color .3s ease, border-color .3s ease;
+  font-family:var(--font-display);font-weight:900;font-size:34px;
+  font-style:italic;letter-spacing:-.02em;
+  text-align:center;line-height:1;
+  background:linear-gradient(180deg,#e8c074 0%,#c9a45f 40%,#a37526 75%,#7a5424 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(122,84,36,.18));
+  transition:filter .3s ease, transform .3s ease;
 }
-.numlist:hover .item:hover .n{color:var(--red);border-color:var(--red)}
+.numlist:hover .item:hover .n{
+  filter:drop-shadow(0 2px 6px rgba(140,28,19,.35));
+  transform:scale(1.08);
+}
 .numlist .t{font-size:16px;line-height:1.5;color:var(--ink)}
 .numlist .t strong{display:block;color:var(--brown-dark);font-weight:700;
   font-size:18px;margin-bottom:3px;
