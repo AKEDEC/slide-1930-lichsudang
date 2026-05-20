@@ -431,10 +431,32 @@ body{
   width:200px;margin:14px 0 10px;opacity:.7;color:var(--gold-soft)
 }
 .cover .c-big{
-  font-family:var(--font-display);font-weight:900;font-size:88px;line-height:.98;
+  font-family:var(--font-display);font-weight:900;font-size:80px;line-height:.98;
   margin-top:auto;letter-spacing:-.02em;color:#f4ecd7;
 }
 .cover .c-big em{font-style:italic;color:var(--gold-soft);font-weight:700}
+.cover .c-month{
+  display:inline-block;
+  font-family:var(--font-display);font-style:italic;font-weight:600;
+  font-size:42px;letter-spacing:.01em;margin-left:14px;
+  vertical-align:baseline;line-height:1;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.45));
+  transition:transform .4s cubic-bezier(.2,.7,.2,1), filter .3s ease;
+}
+.cover .c-month.gold{
+  background:linear-gradient(135deg,#fbe9b8 0%,#e8c074 30%,#c9a45f 60%,#a37526 100%);
+  -webkit-background-clip:text;background-clip:text;
+}
+.cover .c-month.red{
+  background:linear-gradient(135deg,#ffd28a 0%,#e0a560 25%,#c66b2c 55%,#8c1c13 100%);
+  -webkit-background-clip:text;background-clip:text;
+}
+.cover .c-month:hover{
+  transform:translateY(-2px) scale(1.04);
+  filter:drop-shadow(0 6px 14px rgba(201,164,95,.6));
+}
 .cover .c-sub{font-size:18px;color:#d6c4a8;margin-top:18px;max-width:36ch;line-height:1.5;
   font-style:italic;font-family:var(--font-display)}
 .cover .c-foot{margin-top:auto;display:flex;justify-content:space-between;
@@ -805,7 +827,7 @@ body{
     <div class="c-left">
       <div class="c-course">Lịch sử Đảng Cộng sản Việt Nam</div>
       <svg class="c-orna"><use href="#orna-flourish"/></svg>
-      <h1 class="c-big">Cương lĩnh<br>chính trị<br><em>&</em> Luận cương</h1>
+      <h1 class="c-big">Cương lĩnh chính trị <span class="c-month gold">tháng 2</span><br><em>&</em> Luận cương <span class="c-month red">tháng 10</span></h1>
       <p class="c-sub">So sánh hai văn kiện chính trị đặt nền móng cho cách mạng Việt Nam</p>
       <div class="c-foot" style="justify-content:flex-start">
         <div>
