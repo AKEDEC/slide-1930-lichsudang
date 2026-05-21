@@ -33,9 +33,12 @@ và Luận cương chính trị (10/1930). Gồm 27 slide.
 ```
 1. Sửa "Slide Lịch Sử Đảng_101.html"
 2. python3 build.py
-3. Mở index.html bằng trình duyệt để kiểm tra
+3. cp index.html "/Users/ledinhdung/Desktop/Slide thuyết trình final.html"
 4. git add -A && git commit -m "..." && git push
 ```
+
+Bước 3 đảm bảo file backup trên Desktop (dùng cho USB / offline)
+luôn đồng bộ với bản build mới nhất.
 
 ## Lưu ý khi xem trước (preview)
 
