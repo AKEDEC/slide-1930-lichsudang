@@ -49,4 +49,9 @@ và Luận cương chính trị (10/1930). Gồm 27 slide.
 - Có mạng: dùng link Pages → https://akedec.github.io/slide-1930-lichsudang/
 - Không chắc có mạng: tải `index.html` về máy/USB, mở bằng trình duyệt
   (chạy được kể cả offline vì ảnh đã nhúng sẵn).
-- Hoặc dùng VPS riêng: http://103.68.68.144/slide-1930/
+
+## ❌ KHÔNG deploy lên VPS
+
+VPS (103.68.68.144) đã được loại bỏ khỏi workflow. **TUYỆT ĐỐI KHÔNG**
+chạy `scp` lên VPS, không SSH lên `kiet@103.68.68.144`, không deploy lên
+`C:\inetpub\wwwroot\slide-1930\`. Chỉ commit + push GitHub là đủ.
